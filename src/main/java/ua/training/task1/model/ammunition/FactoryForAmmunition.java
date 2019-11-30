@@ -38,6 +38,14 @@ package ua.training.task1.model.ammunition;
  * @author      Dashchyk Andrey
  */
 public class FactoryForAmmunition {
+
+    /**
+     * Factory method for ammunition
+     *
+     * @param sliceDepends shared param for constructors
+     * @param pierceDepends shared param for constructors
+     * @param impactDepends shared param for constructors
+     */
     public Ammunition create(String type, String name, double weight, double price, double wearOn,
                         double sliceDepends, double pierceDepends, double impactDepends) {
         switch (type) {
