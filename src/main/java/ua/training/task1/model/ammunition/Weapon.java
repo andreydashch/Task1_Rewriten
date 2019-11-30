@@ -36,5 +36,20 @@ package ua.training.task1.model.ammunition;
 /**
  * @author      Dashchyk Andrey
  */
-public class Weapon {
+public class Weapon extends Ammunition{
+    private double sliceDamage;
+    private double pierceDamage;
+    private double impactDamage;
+    private double minRange;
+    private double maxRange;
+
+    public Weapon(String name, double weight, double price, double wearOn, double sliceDamage,
+                  double pierceDamage, double impactDamage, double minRange, double maxRange) {
+        super(name, weight, price, wearOn);
+        this.sliceDamage = sliceDamage;
+        this.pierceDamage = pierceDamage;
+        this.impactDamage = impactDamage;
+        this.minRange = minRange;
+        this.maxRange = maxRange;
+    }
 }
