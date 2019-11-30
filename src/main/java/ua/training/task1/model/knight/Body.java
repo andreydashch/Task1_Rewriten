@@ -1,5 +1,5 @@
 /*
- * @(#) App.java
+ * @(#) Body.java
  *
  * MIT License
  *
@@ -26,16 +26,10 @@
  */
 
 
-
-package ua.training.task1;
+package ua.training.task1.model.knight;
 
 /**
  * @author      Dashchyk Andrey
  */
-public class App 
-{
-    public static void main( String[] args )
-    {
-        System.out.println( "Hello World!" );
-    }
+public class Body {
 }

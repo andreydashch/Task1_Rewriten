@@ -1,5 +1,5 @@
 /*
- * @(#) App.java
+ * @(#) Armor.java
  *
  * MIT License
  *
@@ -26,16 +26,10 @@
  */
 
 
-
-package ua.training.task1;
+package ua.training.task1.model.ammunition;
 
 /**
  * @author      Dashchyk Andrey
  */
-public class App 
-{
-    public static void main( String[] args )
-    {
-        System.out.println( "Hello World!" );
-    }
+public class Armor {
 }
