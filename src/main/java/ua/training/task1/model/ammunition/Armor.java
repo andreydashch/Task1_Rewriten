@@ -37,5 +37,16 @@ package ua.training.task1.model.ammunition;
 /**
  * @author      Dashchyk Andrey
  */
-public class Armor {
+public class Armor extends Ammunition{
+    private double sliceResist;
+    private double pieceResist;
+    private double impactResist;
+
+    public Armor(String name, double weight, double price, double wearOn,
+                 double sliceResist, double pieceResist, double impactResist) {
+        super(name, weight, price, wearOn);
+        this.sliceResist = sliceResist;
+        this.pieceResist = pieceResist;
+        this.impactResist = impactResist;
+    }
 }
