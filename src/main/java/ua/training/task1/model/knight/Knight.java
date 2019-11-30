@@ -35,6 +35,8 @@
 package ua.training.task1.model.knight;
 
 import ua.training.task1.model.ammunition.Ammunition;
+import ua.training.task1.model.ammunition.Armor;
+import ua.training.task1.model.ammunition.Weapon;
 
 import java.util.HashMap;
 
@@ -57,5 +59,47 @@ public class Knight {
         for(String key : equipment.keySet()) {
             this.equipment.put(key, equipment.get(key));
         }
+    }
+
+    public double countDamagePerSecond() {
+        double damagePerSecond = 0;
+        Ammunition ammunition;
+        Weapon weapon;
+
+
+        for(String key : equipment.keySet()) {
+            ammunition = equipment.get(key);
+
+            if (ammunition instanceof Weapon) {
+                weapon = (Weapon)ammunition;
+
+                damagePerSecond += weapon.getImpactDamage();
+                damagePerSecond += weapon.getSliceDamage();
+                damagePerSecond += weapon.getPierceDamage();
+            }
+        }
+
+        return damagePerSecond;
+    }
+
+    public double countResistPerSecond() {
+        double resistPerSecond = 0;
+        Ammunition ammunition;
+        Armor armor;
+
+
+        for(String key : equipment.keySet()) {
+            ammunition = equipment.get(key);
+
+            if (ammunition instanceof Armor) {
+                armor = (Armor)ammunition;
+
+                resistPerSecond += armor.getImpactResist();
+                resistPerSecond += armor.getSliceResist();
+                resistPerSecond += armor.getPieceResist();
+            }
+        }
+
+        return resistPerSecond;
     }
 }
