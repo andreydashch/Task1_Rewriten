@@ -38,7 +38,6 @@ package ua.training.task1.model.ammunition;
  * @author      Dashchyk Andrey
  */
 public class FactoryForAmmunition {
-
     /**
      * Factory method for ammunition
      *
