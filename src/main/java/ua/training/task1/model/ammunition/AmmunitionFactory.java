@@ -35,9 +35,28 @@
 package ua.training.task1.model.ammunition;
 
 /**
+ * Factory methods class which
+ * is Singleton
+ *
  * @author      Dashchyk Andrey
  */
 public class AmmunitionFactory {
+    /*
+     * Singleton implementation
+     * with support of multithreading
+     */
+    private static class AmmunitionFactoryHolder {
+        private static final AmmunitionFactory instance = new AmmunitionFactory();
+    }
+
+    public static AmmunitionFactory getInstance() {
+        return AmmunitionFactoryHolder.instance;
+    }
+
+    private AmmunitionFactory() {
+        // Empty
+    }
+
     /**
      * Factory method for ammunition
      *
