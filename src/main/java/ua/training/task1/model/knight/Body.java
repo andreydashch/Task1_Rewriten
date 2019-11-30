@@ -1,5 +1,5 @@
 /*
- * @(#) Knight.java
+ * @(#) Body.java
  *
  * MIT License
  *
@@ -34,28 +34,24 @@
 
 package ua.training.task1.model.knight;
 
-import ua.training.task1.model.ammunition.Ammunition;
-
-import java.util.HashMap;
-
 /**
  * @author      Dashchyk Andrey
  */
-public class Knight {
-    private static Body body = new Body();
-    private HashMap<String, Ammunition> equipment;
+public class Body {
+    private final String[] bodyParts;
 
-    {
-        equipment = new HashMap<>();
-
-        for(String key : body.getBodyParts()) {
-            equipment.put(key, null);
-        }
+    Body() {
+        bodyParts = new String[] {
+                "head",
+                "chest",
+                "arms",
+                "legs",
+                "leftHand",
+                "rightHand"
+        };
     }
 
-    public Knight(HashMap<String, Ammunition> equipment) {
-        for(String key : equipment.keySet()) {
-            this.equipment.put(key, equipment.get(key));
-        }
+    public String[] getBodyParts() {
+        return bodyParts;
     }
 }
