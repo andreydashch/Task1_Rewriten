@@ -45,16 +45,24 @@ public class FactoryForAmmunition {
      * @param sliceDepends shared param for constructors
      * @param pierceDepends shared param for constructors
      * @param impactDepends shared param for constructors
+     * @return SubClass as SuperClass
      */
     public Ammunition create(String type, String name, double weight, double price, double wearOn,
                         double sliceDepends, double pierceDepends, double impactDepends) {
+        Ammunition instance;
+
         switch (type) {
-        case "Armor":
-            return new Armor(name, weight, price, wearOn, sliceDepends, pierceDepends, impactDepends);
-        case "Weapon":
-            return new Weapon(name, weight, price, wearOn, sliceDepends, pierceDepends, impactDepends);
-        default:
-            return null;
+            case "Armor":
+                instance = new Armor(name, weight, price, wearOn, sliceDepends, pierceDepends, impactDepends);
+                break;
+            case "Weapon":
+                instance = new Weapon(name, weight, price, wearOn, sliceDepends, pierceDepends, impactDepends);
+                break;
+            default:
+                instance = null;
+                break;
         }
+        
+        return instance;
     }
 }
