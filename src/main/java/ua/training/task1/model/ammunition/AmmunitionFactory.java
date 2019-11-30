@@ -40,7 +40,7 @@ package ua.training.task1.model.ammunition;
  *
  * @author      Dashchyk Andrey
  */
-public class AmmunitionFactory {
+public final class AmmunitionFactory {
     /*
      * Singleton implementation
      * with support of multithreading
