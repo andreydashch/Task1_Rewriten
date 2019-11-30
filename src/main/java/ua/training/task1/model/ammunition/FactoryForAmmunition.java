@@ -1,5 +1,5 @@
 /*
- * @(#) Weapon.java
+ * @(#) FactoryForAmmunition.java
  *
  * MIT License
  *
@@ -31,21 +31,22 @@
  * OTHER DEALINGS IN THE SOFTWARE.
  */
 
+
 package ua.training.task1.model.ammunition;
 
 /**
  * @author      Dashchyk Andrey
  */
-public class Weapon extends Ammunition{
-    private double sliceDamage;
-    private double pierceDamage;
-    private double impactDamage;
-
-    public Weapon(String name, double weight, double price, double wearOn,
-                  double sliceDamage, double pierceDamage, double impactDamage) {
-        super(name, weight, price, wearOn);
-        this.sliceDamage = sliceDamage;
-        this.pierceDamage = pierceDamage;
-        this.impactDamage = impactDamage;
+public class FactoryForAmmunition {
+    public Ammunition create(String type, String name, double weight, double price, double wearOn,
+                        double sliceDepends, double pierceDepends, double impactDepends) {
+        switch (type) {
+        case "Armor":
+            return new Armor(name, weight, price, wearOn, sliceDepends, pierceDepends, impactDepends);
+        case "Weapon":
+            return new Weapon(name, weight, price, wearOn, sliceDepends, pierceDepends, impactDepends);
+        default:
+            return null;
+        }
     }
 }
