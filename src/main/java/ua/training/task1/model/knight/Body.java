@@ -37,10 +37,10 @@ package ua.training.task1.model.knight;
 /**
  * @author      Dashchyk Andrey
  */
-public class Body {
-    private final String[] bodyParts;
+class Body {
+    private static final String[] bodyParts;
 
-    Body() {
+    static {
         bodyParts = new String[] {
                 "head",
                 "chest",
