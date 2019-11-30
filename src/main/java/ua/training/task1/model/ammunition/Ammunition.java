@@ -35,6 +35,8 @@
 package ua.training.task1.model.ammunition;
 
 /**
+ * Super class with no access
+ *
  * @author      Dashchyk Andrey
  */
 public class Ammunition {
