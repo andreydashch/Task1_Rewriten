@@ -37,7 +37,7 @@ package ua.training.task1.model.ammunition;
 /**
  * @author      Dashchyk Andrey
  */
-public class FactoryForAmmunition {
+public class AmmunitionFactory {
     /**
      * Factory method for ammunition
      *
@@ -46,8 +46,8 @@ public class FactoryForAmmunition {
      * @param impactDepends shared param for constructors
      * @return SubClass as SuperClass
      */
-    public Ammunition create(String type, String name, double weight, double price, double wearOn,
-                        double sliceDepends, double pierceDepends, double impactDepends) {
+    public Ammunition produce(String type, String name, double weight, double price, double wearOn,
+                              double sliceDepends, double pierceDepends, double impactDepends) {
         Ammunition instance;
 
         switch (type) {
