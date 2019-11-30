@@ -34,8 +34,29 @@
 
 package ua.training.task1.model.knight;
 
+import ua.training.task1.model.ammunition.Ammunition;
+
+import java.util.HashMap;
+
 /**
  * @author      Dashchyk Andrey
  */
 public class Knight {
+    private HashMap<String, Ammunition> equipment;
+
+    {
+        equipment = new HashMap<>();
+        equipment.put("head", null);
+        equipment.put("body", null);
+        equipment.put("arms", null);
+        equipment.put("legs", null);
+        equipment.put("leftHand", null);
+        equipment.put("rightHand", null);
+    }
+
+    public Knight(HashMap<String, Ammunition> equipment) {
+        for(String key : equipment.keySet()) {
+            this.equipment.put(key, equipment.get(key));
+        }
+    }
 }
