@@ -38,4 +38,15 @@ package ua.training.task1.model.ammunition;
  * @author      Dashchyk Andrey
  */
 public class Ammunition {
+    private String name;
+    private double weight;
+    private double price;
+    private double wearOn;
+
+    protected Ammunition(String name, double weight, double price, double wearOn) {
+        this.name = name;
+        this.weight = weight;
+        this.price = price;
+        this.wearOn = wearOn;
+    }
 }
