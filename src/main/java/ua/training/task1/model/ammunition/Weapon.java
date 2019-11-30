@@ -48,4 +48,16 @@ public class Weapon extends Ammunition{
         this.pierceDamage = pierceDamage;
         this.impactDamage = impactDamage;
     }
+
+    public double getSliceDamage() {
+        return sliceDamage;
+    }
+
+    public double getPierceDamage() {
+        return pierceDamage;
+    }
+
+    public double getImpactDamage() {
+        return impactDamage;
+    }
 }

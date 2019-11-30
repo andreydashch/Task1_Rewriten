@@ -51,4 +51,20 @@ public class Ammunition {
         this.price = price;
         this.wearOn = wearOn;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public double getWeight() {
+        return weight;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public double getWearOn() {
+        return wearOn;
+    }
 }

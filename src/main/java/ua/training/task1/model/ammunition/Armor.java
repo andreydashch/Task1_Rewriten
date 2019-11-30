@@ -49,4 +49,16 @@ public class Armor extends Ammunition{
         this.pieceResist = pieceResist;
         this.impactResist = impactResist;
     }
+
+    public double getSliceResist() {
+        return sliceResist;
+    }
+
+    public double getPieceResist() {
+        return pieceResist;
+    }
+
+    public double getImpactResist() {
+        return impactResist;
+    }
 }
