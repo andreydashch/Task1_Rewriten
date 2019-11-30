@@ -42,16 +42,26 @@ import java.util.HashMap;
  * @author      Dashchyk Andrey
  */
 public class Knight {
+    private static final String[] bodyParts;
     private HashMap<String, Ammunition> equipment;
+
+    static {
+        bodyParts = new String[] {
+                "head",
+                "chest",
+                "arms",
+                "legs",
+                "leftHand",
+                "rightHand"
+         };
+    }
 
     {
         equipment = new HashMap<>();
-        equipment.put("head", null);
-        equipment.put("body", null);
-        equipment.put("arms", null);
-        equipment.put("legs", null);
-        equipment.put("leftHand", null);
-        equipment.put("rightHand", null);
+
+        for(String key : bodyParts) {
+            equipment.put(key, null);
+        }
     }
 
     public Knight(HashMap<String, Ammunition> equipment) {
