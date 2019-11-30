@@ -43,7 +43,7 @@ public class Armor extends Ammunition{
     private double impactResist;
 
     protected Armor(String name, double weight, double price, double wearOn,
-                 double sliceResist, double pieceResist, double impactResist) {
+                    double sliceResist, double pieceResist, double impactResist) {
         super(name, weight, price, wearOn);
         this.sliceResist = sliceResist;
         this.pieceResist = pieceResist;

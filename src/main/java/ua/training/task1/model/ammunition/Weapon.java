@@ -42,7 +42,7 @@ public class Weapon extends Ammunition{
     private double impactDamage;
 
     protected Weapon(String name, double weight, double price, double wearOn,
-                  double sliceDamage, double pierceDamage, double impactDamage) {
+                     double sliceDamage, double pierceDamage, double impactDamage) {
         super(name, weight, price, wearOn);
         this.sliceDamage = sliceDamage;
         this.pierceDamage = pierceDamage;
