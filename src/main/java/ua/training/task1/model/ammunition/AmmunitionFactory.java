@@ -43,6 +43,7 @@ package ua.training.task1.model.ammunition;
 public final class AmmunitionFactory {
     /*
      * Singleton implementation
+     * with support of multithreading
      */
     private static class AmmunitionFactoryHolder {
         private static final AmmunitionFactory instance = new AmmunitionFactory();
