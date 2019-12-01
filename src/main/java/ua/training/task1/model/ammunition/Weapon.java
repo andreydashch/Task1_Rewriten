@@ -37,9 +37,6 @@ package ua.training.task1.model.ammunition;
  * @author      Dashchyk Andrey
  */
 public class Weapon extends Ammunition{
-    private double sliceDamage;
-    private double pierceDamage;
-    private double impactDamage;
 
     protected Weapon(String name, double weight, double price, double wearOn,
                      double sliceDamage, double pierceDamage, double impactDamage) {
@@ -49,15 +46,15 @@ public class Weapon extends Ammunition{
         this.impactDamage = impactDamage;
     }
 
-    public double getSliceDamage() {
-        return sliceDamage;
+    @Override
+    public String toString() {
+        return "Weapon\n"+
+                getName() + "\n"+
+                getPrice() + " Coins\n"+
+                getWeight() + " Kilos\n"+
+                getSliceDamage() + " SliceDamage\n"+
+                getPierceDamage() + " PierceDamage\n"+
+                getImpactDamage() + " ImpactDamage\n";
     }
 
-    public double getPierceDamage() {
-        return pierceDamage;
-    }
-
-    public double getImpactDamage() {
-        return impactDamage;
-    }
 }

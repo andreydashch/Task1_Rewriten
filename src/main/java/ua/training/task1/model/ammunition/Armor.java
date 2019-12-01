@@ -38,27 +38,23 @@ package ua.training.task1.model.ammunition;
  * @author      Dashchyk Andrey
  */
 public class Armor extends Ammunition{
-    private double sliceResist;
-    private double pieceResist;
-    private double impactResist;
 
     protected Armor(String name, double weight, double price, double wearOn,
-                    double sliceResist, double pieceResist, double impactResist) {
+                    double sliceDamage, double pierceDamage, double impactDamage) {
         super(name, weight, price, wearOn);
-        this.sliceResist = sliceResist;
-        this.pieceResist = pieceResist;
-        this.impactResist = impactResist;
+        this.sliceDamage = -1 * sliceDamage;
+        this.pierceDamage = -1 * pierceDamage;
+        this.impactDamage = -1 * impactDamage;
     }
 
-    public double getSliceResist() {
-        return sliceResist;
-    }
-
-    public double getPieceResist() {
-        return pieceResist;
-    }
-
-    public double getImpactResist() {
-        return impactResist;
+    @Override
+    public String toString() {
+        return "Armor\n"+
+                getName() + "\n"+
+                getPrice() + " Coins\n"+
+                getWeight() + " Kilos\n"+
+                getSliceDamage() + " SliceResist\n"+
+                getPierceDamage() + " PierceResist\n"+
+                getImpactDamage() + " ImpactResist\n";
     }
 }
