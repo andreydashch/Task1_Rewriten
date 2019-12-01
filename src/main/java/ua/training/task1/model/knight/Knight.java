@@ -96,14 +96,14 @@ public class Knight {
         return countDamageAmountPerAttack(Weapon.class);
     }
 
-    private double countDamageAmountPerAttack(Class SubClass) {
+    private double countDamageAmountPerAttack(Class subClass) {
         double damageAmountPerSecond = 0;
         Ammunition ammunition;
 
         for(String key : equipment.keySet()) {
             ammunition = equipment.get(key);
 
-            if (SubClass.isInstance(ammunition)) {
+            if (subClass.isInstance(ammunition)) {
                 damageAmountPerSecond += ammunition.getImpactDamage();
                 damageAmountPerSecond += ammunition.getSliceDamage();
                 damageAmountPerSecond += ammunition.getPierceDamage();
