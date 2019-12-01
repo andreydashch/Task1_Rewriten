@@ -34,6 +34,8 @@
 
 package ua.training.task1;
 
+import ua.training.task1.view.View;
+
 /**
  * @author      Dashchyk Andrey
  */
@@ -41,6 +43,7 @@ public class App
 {
     public static void main( String[] args )
     {
-        System.out.println( "Hello World!" );
+        View view = new View();
+
     }
 }
