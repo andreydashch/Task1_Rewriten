@@ -80,7 +80,7 @@ public class Knight {
      * @param minBorder such as >= minBorder
      * @param maxBorder such as <= minBorder
      */
-    public ArrayList<Ammunition> findAmmunitionInPriceBorders(double minBorder, double maxBorder) {
+    public ArrayList<Ammunition> findAmmunitionInPriceRange(double minBorder, double maxBorder) {
         ArrayList<Ammunition> ammunitionList = new ArrayList<>();
 
         // Implement later
