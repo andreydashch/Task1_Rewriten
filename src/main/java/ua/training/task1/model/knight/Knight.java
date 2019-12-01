@@ -61,45 +61,30 @@ public class Knight {
         }
     }
 
-    public double countDamagePerSecond() {
-        double damagePerSecond = 0;
-        Ammunition ammunition;
-        Weapon weapon;
-
-
-        for(String key : equipment.keySet()) {
-            ammunition = equipment.get(key);
-
-            if (ammunition instanceof Weapon) {
-                weapon = (Weapon)ammunition;
-
-                damagePerSecond += weapon.getImpactDamage();
-                damagePerSecond += weapon.getSliceDamage();
-                damagePerSecond += weapon.getPierceDamage();
-            }
-        }
-
-        return damagePerSecond;
-    }
-
     public double countResistPerSecond() {
-        double resistPerSecond = 0;
-        Ammunition ammunition;
-        Armor armor;
+        return countDamageAmountPerAttack(Armor.class);
+    }
 
+    public double countDamagePerSecond() {
+        return countDamageAmountPerAttack(Weapon.class);
+    }
+
+    private double countDamageAmountPerAttack(Class test) {
+        double damageAmountPerSecond = 0;
+        Ammunition ammunition;
 
         for(String key : equipment.keySet()) {
             ammunition = equipment.get(key);
 
-            if (ammunition instanceof Armor) {
-                armor = (Armor)ammunition;
-
-                resistPerSecond += armor.getImpactResist();
-                resistPerSecond += armor.getSliceResist();
-                resistPerSecond += armor.getPieceResist();
+            if (test.isInstance(ammunition)) {
+                damageAmountPerSecond += ammunition.getImpactDamage();
+                damageAmountPerSecond += ammunition.getSliceDamage();
+                damageAmountPerSecond += ammunition.getPierceDamage();
             }
         }
 
-        return resistPerSecond;
+        return damageAmountPerSecond;
     }
+
+
 }
