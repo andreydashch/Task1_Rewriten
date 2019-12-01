@@ -1,5 +1,5 @@
 /*
- * @(#) View.java
+ * @(#) TextConst.java
  *
  * MIT License
  *
@@ -32,30 +32,14 @@
  */
 
 
-package ua.training.task1.view;
+package ua.training.task1.view.constant;
 
-import ua.training.task1.view.constant.ViewSetUpConst;
-
-import java.util.Locale;
-import java.util.ResourceBundle;
+import ua.training.task1.view.View;
 
 /**
  * @author      Dashchyk Andrey
  */
-public class View {
-    public static ResourceBundle resourceBundle;
-
-    static {
-        Locale locale;
-
-        locale = new Locale(ViewSetUpConst.DEFAULT_LOCALE);
-        resourceBundle = ResourceBundle.getBundle(ViewSetUpConst.MESSAGE_BUNDLE_NAME, locale);
-    }
-
-    /**
-     * Println in console
-     */
-    public void printlnMessage(String message) {
-        System.out.println(message);
-    }
+public class TextConst {
+    public static final String INCORRECT_FILE_STRUCTURE_ERROR =
+            View.resourceBundle.getString("INCORRECT_FILE_STRUCTURE_ERROR");
 }

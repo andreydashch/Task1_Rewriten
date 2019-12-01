@@ -1,5 +1,5 @@
 /*
- * @(#) View.java
+ * @(#) ViewSetUpConst.java
  *
  * MIT License
  *
@@ -32,30 +32,12 @@
  */
 
 
-package ua.training.task1.view;
-
-import ua.training.task1.view.constant.ViewSetUpConst;
-
-import java.util.Locale;
-import java.util.ResourceBundle;
+package ua.training.task1.view.constant;
 
 /**
  * @author      Dashchyk Andrey
  */
-public class View {
-    public static ResourceBundle resourceBundle;
-
-    static {
-        Locale locale;
-
-        locale = new Locale(ViewSetUpConst.DEFAULT_LOCALE);
-        resourceBundle = ResourceBundle.getBundle(ViewSetUpConst.MESSAGE_BUNDLE_NAME, locale);
-    }
-
-    /**
-     * Println in console
-     */
-    public void printlnMessage(String message) {
-        System.out.println(message);
-    }
+public class ViewSetUpConst {
+    public static final String MESSAGE_BUNDLE_NAME = "message";
+    public static final String DEFAULT_LOCALE = "ua";
 }
