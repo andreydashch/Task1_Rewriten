@@ -37,19 +37,13 @@ package ua.training.task1.model.ammunition;
  * @author      Dashchyk Andrey
  */
 public class Weapon extends Ammunition{
-    protected double maxRange;
 
     protected Weapon(String name, double weight, double price, double wearOn,
-                     double sliceDamage, double pierceDamage, double impactDamage, double maxRange) {
+                     double sliceDamage, double pierceDamage, double impactDamage) {
         super(name, weight, price, wearOn);
         this.sliceDamage = sliceDamage;
         this.pierceDamage = pierceDamage;
         this.impactDamage = impactDamage;
-        this.maxRange = maxRange;
-    }
-
-    public double getMaxRange() {
-        return maxRange;
     }
 
     @Override
@@ -60,8 +54,7 @@ public class Weapon extends Ammunition{
                 getWeight() + " Kilos\n"+
                 getSliceDamage() + " SliceDamage\n"+
                 getPierceDamage() + " PierceDamage\n"+
-                getImpactDamage() + " ImpactDamage\n"+
-                getMaxRange() + " MaxRange\n";
+                getImpactDamage() + " ImpactDamage\n";
     }
 
 }
