@@ -38,9 +38,13 @@ import ua.training.task1.model.ammunition.Ammunition;
 import ua.training.task1.model.ammunition.Armor;
 import ua.training.task1.model.ammunition.Weapon;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
+ * Did not implement sort!!
+ * Did not implement choose!!
+ *
  * @author      Dashchyk Andrey
  */
 public class Knight {
@@ -59,6 +63,29 @@ public class Knight {
         for(String key : equipment.keySet()) {
             this.equipment.put(key, equipment.get(key));
         }
+    }
+
+    /**
+     * @return from min to max
+     */
+    public ArrayList<Ammunition> sortAmmunitionByPrice() {
+        ArrayList<Ammunition> ammunitionList = new ArrayList<>();
+
+        // Implement later
+
+        return null;
+    }
+
+    /**
+     * @param minBorder such as >= minBorder
+     * @param maxBorder such as <= minBorder
+     */
+    public ArrayList<Ammunition> findAmmunitionInPriceBorders(double minBorder, double maxBorder) {
+        ArrayList<Ammunition> ammunitionList = new ArrayList<>();
+
+        // Implement later
+
+        return null;
     }
 
     public double countResistPerSecond() {
