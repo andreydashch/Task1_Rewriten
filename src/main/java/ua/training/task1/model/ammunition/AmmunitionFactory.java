@@ -60,21 +60,21 @@ public final class AmmunitionFactory {
     /**
      * Factory method for ammunition
      *
-     * @param sliceDepends shared param for constructors
-     * @param pierceDepends shared param for constructors
-     * @param impactDepends shared param for constructors
+     * @param dependsParam shared parameters for different constructors, length in [3, 4]
      * @return SubClass as SuperClass
      */
     public Ammunition produce(String type, String name, double weight, double price, double wearOn,
-                              double sliceDepends, double pierceDepends, double impactDepends) {
+                              double[] dependsParam) {
         Ammunition instance;
 
         switch (type) {
             case "Armor":
-                instance = new Armor(name, weight, price, wearOn, sliceDepends, pierceDepends, impactDepends);
+                instance = new Armor(name, weight, price, wearOn,
+                        dependsParam[0], dependsParam[1], dependsParam[2]);
                 break;
             case "Weapon":
-                instance = new Weapon(name, weight, price, wearOn, sliceDepends, pierceDepends, impactDepends);
+                instance = new Weapon(name, weight, price, wearOn,
+                        dependsParam[0], dependsParam[1], dependsParam[2], dependsParam[3]);
                 break;
             default:
                 instance = null;
