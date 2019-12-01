@@ -34,10 +34,22 @@
 
 package ua.training.task1.view;
 
+import ua.training.task1.view.constant.ViewSetUp;
+
+import java.util.Locale;
+import java.util.ResourceBundle;
+
 /**
  * @author      Dashchyk Andrey
  */
 public class View {
+    private static Locale locale;
+    private static ResourceBundle resourceBundle;
+
+    static {
+        locale = new Locale(ViewSetUp.DEFAULT_LOCALE);
+        resourceBundle = ResourceBundle.getBundle(ViewSetUp.MESSAGE_BUNDLE_NAME, locale);
+    }
 
     /**
      * Println in console
