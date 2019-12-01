@@ -40,10 +40,13 @@ package ua.training.task1.model.ammunition;
  * @author      Dashchyk Andrey
  */
 public class Ammunition {
-    private String name;
-    private double weight;
-    private double price;
-    private double wearOn;
+    protected String name;
+    protected double weight;
+    protected double price;
+    protected double wearOn;
+    protected double sliceDamage;
+    protected double pierceDamage;
+    protected double impactDamage;
 
     protected Ammunition(String name, double weight, double price, double wearOn) {
         this.name = name;
@@ -66,5 +69,25 @@ public class Ammunition {
 
     public double getWearOn() {
         return wearOn;
+    }
+
+    public double getSliceDamage() {
+        return sliceDamage;
+    }
+
+    public double getPierceDamage() {
+        return pierceDamage;
+    }
+
+    public double getImpactDamage() {
+        return impactDamage;
+    }
+
+    @Override
+    public String toString() {
+        return "Equipment\n" +
+                getName() + "\n" +
+                getPrice() + " Coins\n" +
+                getWeight() + " Kilos\n";
     }
 }
