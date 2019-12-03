@@ -120,5 +120,7 @@ public class Knight {
         return damageAmountPerSecond;
     }
 
-
+    public static HashSet<String> getBodyPartsNames() {
+        return bodyPartsNames;
+    }
 }
