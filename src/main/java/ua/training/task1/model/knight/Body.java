@@ -54,32 +54,25 @@ class Body {
         }
     }
 
-    public boolean wearAmmunitionOnExistBodyPart(String bodyPartName, Ammunition ammunition) {
-        for(BodyPart bodyPart : bodyParts) {
-            boolean existBodyPart = bodyPartName.hashCode() == bodyPart.hashCode();
-
-            if (existBodyPart) {
-                bodyPart.setAmmunition(ammunition);
-
-                return true;
-            }
-        }
-
-        return false;
+    public void wearAmmunitionOnExistBodyPart(String bodyPartName, Ammunition ammunition) {
+        findBodyPart(bodyPartName).setAmmunition(ammunition);
     }
 
     public Ammunition getAmmunitionFromBodyPart(String bodyPartName) {
+        return findBodyPart(bodyPartName).getAmmunition();
+    }
+
+    private BodyPart findBodyPart(String bodyPartName) {
+        BodyPart searchingBodyPart = null;
+
         for(BodyPart bodyPart : bodyParts) {
             boolean existBodyPart = bodyPartName.hashCode() == bodyPart.hashCode();
-
             if (existBodyPart) {
-
-
-                return bodyPart.getAmmunition();
+                searchingBodyPart = bodyPart;
             }
         }
 
-        return null;
+        return  searchingBodyPart;
     }
 
     public HashSet<String> getBodyPartsNames() {
@@ -95,7 +88,7 @@ class Body {
 
 class BodyPart {
     private String name;
-    private Ammunition ammunition;
+    private Ammunition ammunition = null;
 
 
     public BodyPart(String name) {
@@ -116,8 +109,12 @@ class BodyPart {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         BodyPart bodyPart = (BodyPart) o;
 
         return name.equals(bodyPart.name);
