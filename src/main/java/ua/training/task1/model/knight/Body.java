@@ -34,24 +34,97 @@
 
 package ua.training.task1.model.knight;
 
+import ua.training.task1.model.ammunition.Ammunition;
+
+import java.util.HashSet;
+import java.util.Objects;
+import java.util.Set;
+
 /**
  * @author      Dashchyk Andrey
  */
 class Body {
-    private static final String[] bodyParts;
+    private HashSet<BodyPart> bodyParts;
 
-    static {
-        bodyParts = new String[] {
-                "head",
-                "chest",
-                "arms",
-                "legs",
-                "leftHand",
-                "rightHand"
-        };
+    public Body(Set<String> names) {
+        bodyParts = new HashSet<>();
+
+        for(String name : names) {
+            bodyParts.add(new BodyPart(name));
+        }
     }
 
-    public String[] getBodyParts() {
-        return bodyParts;
+    public boolean wearAmmunitionOnExistBodyPart(String bodyPartName, Ammunition ammunition) {
+        for(BodyPart bodyPart : bodyParts) {
+            boolean existBodyPart = bodyPartName.hashCode() == bodyPart.hashCode();
+
+            if (existBodyPart) {
+                bodyPart.setAmmunition(ammunition);
+
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public Ammunition getAmmunitionFromBodyPart(String bodyPartName) {
+        for(BodyPart bodyPart : bodyParts) {
+            boolean existBodyPart = bodyPartName.hashCode() == bodyPart.hashCode();
+
+            if (existBodyPart) {
+
+
+                return bodyPart.getAmmunition();
+            }
+        }
+
+        return null;
+    }
+
+    public HashSet<String> getBodyPartsNames() {
+        HashSet<String> names = new HashSet<>();
+
+        for(BodyPart bodyPart : bodyParts) {
+            names.add(bodyPart.getName());
+        }
+
+        return names;
+    }
+}
+
+class BodyPart {
+    private String name;
+    private Ammunition ammunition;
+
+
+    public BodyPart(String name) {
+        this.name = name;
+    }
+
+    public void setAmmunition(Ammunition ammunition) {
+        this.ammunition = ammunition;
+    }
+
+    public Ammunition getAmmunition() {
+        return ammunition;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        BodyPart bodyPart = (BodyPart) o;
+
+        return name.equals(bodyPart.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name);
     }
 }

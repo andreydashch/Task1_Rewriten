@@ -40,6 +40,7 @@ import ua.training.task1.model.ammunition.Weapon;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 
 /**
  * Did not implement sort!!
@@ -48,20 +49,26 @@ import java.util.HashMap;
  * @author      Dashchyk Andrey
  */
 public class Knight {
-    private static Body body = new Body();
-    private HashMap<String, Ammunition> equipment;
+    private static final HashSet<String> bodyPartsNames;
+    private Body body;
+
+    static {
+        bodyPartsNames = new HashSet<>();
+
+        bodyPartsNames.add("head");
+        bodyPartsNames.add("chest");
+        bodyPartsNames.add("arms");
+        bodyPartsNames.add("leftHand");
+        bodyPartsNames.add("rightHand");
+    }
 
     {
-        equipment = new HashMap<>();
-
-        for(String key : body.getBodyParts()) {
-            equipment.put(key, null);
-        }
+        body = new Body(bodyPartsNames);
     }
 
     public Knight(HashMap<String, Ammunition> equipment) {
         for(String key : equipment.keySet()) {
-            this.equipment.put(key, equipment.get(key));
+            body.wearAmmunitionOnExistBodyPart(key, equipment.get(key));
         }
     }
 
@@ -100,8 +107,8 @@ public class Knight {
         double damageAmountPerSecond = 0;
         Ammunition ammunition;
 
-        for(String key : equipment.keySet()) {
-            ammunition = equipment.get(key);
+        for(String key : body.getBodyPartsNames()) {
+            ammunition = body.getAmmunitionFromBodyPart(key);
 
             if (subClass.isInstance(ammunition)) {
                 damageAmountPerSecond += ammunition.getImpactDamage();
