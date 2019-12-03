@@ -67,6 +67,7 @@ class Body {
 
         for(BodyPart bodyPart : bodyParts) {
             boolean existBodyPart = bodyPartName.hashCode() == bodyPart.hashCode();
+
             if (existBodyPart) {
                 searchingBodyPart = bodyPart;
             }
@@ -108,14 +109,14 @@ class BodyPart {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) {
+    public boolean equals(Object obj) {
+        if (this == obj) {
             return true;
         }
-        if (o == null || getClass() != o.getClass()) {
+        if (obj == null || getClass() != obj.getClass()) {
             return false;
         }
-        BodyPart bodyPart = (BodyPart) o;
+        BodyPart bodyPart = (BodyPart) obj;
 
         return name.equals(bodyPart.name);
     }
