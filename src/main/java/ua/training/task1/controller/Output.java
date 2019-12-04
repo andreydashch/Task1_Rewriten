@@ -57,7 +57,7 @@ public class Output {
         StringBuilder[] lines;
 
         arrayLength = countStringLines(ammunitionArray.get(0).toString());
-        stringLength = ammunitionArray.get(2).toString().length() + 2;
+        stringLength = (int)(ammunitionArray.get(0).toString().length()/5) + 2;
         stringLength *= Knight.getBodyPartsNames().size();
 
         lines = initialiseStringBuilderString(arrayLength, stringLength);
@@ -78,7 +78,7 @@ public class Output {
             for (String linePart : ammunitionString.split(TextConst.NEW_LINE)) {
                 lines[index].append(linePart);
                 lines[index].append(TextConst.TEXT_SEPARATOR);
-                index++;
+                index ++;
             }
         }
     }
@@ -86,8 +86,8 @@ public class Output {
     private StringBuilder[] initialiseStringBuilderString(int arrayLength, int stringLength) {
         StringBuilder[] stringBuilderArray = new StringBuilder[arrayLength];
 
-        for (StringBuilder stringBuilder : stringBuilderArray) {
-            stringBuilder = new StringBuilder(stringLength);
+        for (int i=0;i <= stringBuilderArray.length - 1;i ++) {
+            stringBuilderArray[i] = new StringBuilder(stringLength);
         }
 
         return stringBuilderArray;

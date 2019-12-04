@@ -37,7 +37,6 @@ package ua.training.task1.model.knight;
 import ua.training.task1.model.ammunition.Ammunition;
 
 import java.util.HashSet;
-import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -127,6 +126,6 @@ class BodyPart {
 
     @Override
     public int hashCode() {
-        return Objects.hash(name);
+        return name.hashCode();
     }
 }

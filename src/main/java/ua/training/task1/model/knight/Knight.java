@@ -84,8 +84,9 @@ public class Knight {
         ArrayList<Ammunition> ammunitionList = new ArrayList<>();
 
         // Implement later
+        ammunitionList.add(body.getAmmunitionFromBodyPart("head"));
 
-        return null;
+        return ammunitionList;
     }
 
     /**
@@ -96,8 +97,9 @@ public class Knight {
         ArrayList<Ammunition> ammunitionList = new ArrayList<>();
 
         // Implement later
+        ammunitionList.add(body.getAmmunitionFromBodyPart("head"));
 
-        return null;
+        return ammunitionList;
     }
 
     public double countResistPerSecond() {

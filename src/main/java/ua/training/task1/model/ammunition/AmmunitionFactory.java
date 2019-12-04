@@ -70,10 +70,10 @@ public final class AmmunitionFactory {
         Ammunition instance;
 
         switch (type) {
-            case "Armor":
+            case "armor":
                 instance = new Armor(name, weight, price, sliceDepends, pierceDepends, impactDepends);
                 break;
-            case "Weapon":
+            case "weapon":
                 instance = new Weapon(name, weight, price, sliceDepends, pierceDepends, impactDepends);
                 break;
             default:
