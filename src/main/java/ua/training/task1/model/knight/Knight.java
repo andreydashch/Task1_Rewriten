@@ -82,9 +82,15 @@ public class Knight {
      */
     public ArrayList<Ammunition> sortAmmunitionByPrice() {
         ArrayList<Ammunition> ammunitionList = new ArrayList<>();
+        Ammunition ammunition;
 
         // Implement later
-        ammunitionList.add(body.getAmmunitionFromBodyPart("head"));
+        for(String key : body.getBodyPartsNames()) {
+            ammunition = body.getAmmunitionFromBodyPart(key);
+            if (ammunition != null){
+                ammunitionList.add(ammunition);
+            }
+        }
 
         return ammunitionList;
     }
