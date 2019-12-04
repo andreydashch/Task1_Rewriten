@@ -34,6 +34,7 @@
 
 package ua.training.task1;
 
+import ua.training.task1.controller.Controller;
 import ua.training.task1.view.View;
 
 /**
@@ -44,5 +45,8 @@ public class App
     public static void main( String[] args )
     {
         View view = new View();
+        Controller controller = new Controller(view);
+
+        controller.processUser();
     }
 }
