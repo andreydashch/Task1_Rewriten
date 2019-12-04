@@ -35,7 +35,6 @@
 package ua.training.task1.controller;
 
 import ua.training.task1.model.ammunition.Ammunition;
-import ua.training.task1.model.ammunition.AmmunitionFactory;
 import ua.training.task1.model.knight.Knight;
 import ua.training.task1.view.View;
 
@@ -46,9 +45,7 @@ import java.util.Scanner;
  * @author      Dashchyk Andrey
  */
 public class Controller {
-    static final AmmunitionFactory ammunitionFactory = AmmunitionFactory.getInstance();
     static final String INPUT_SEPARATOR = ";";
-    static final int STRING_INPUT_PARAMETERS = 2;
     private final ua.training.task1.controller.output output = new output(this);
     private final ua.training.task1.controller.input input = new input();
     private View view;
@@ -68,6 +65,8 @@ public class Controller {
         knight = new Knight(knightAmmunition);
         output.printAmmunitionArrayList(knight.sortAmmunitionByPrice());
     }
+
+
 
     public View getView() {
         return view;

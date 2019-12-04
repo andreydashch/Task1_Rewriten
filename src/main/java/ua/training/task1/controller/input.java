@@ -18,7 +18,7 @@ public class input {
             String[] initialString = ammunitionInitial.split(Controller.INPUT_SEPARATOR);
             initialDouble = extractDoubleArray(initialString);
 
-            ammunition = Controller.ammunitionFactory.produce(initialString[1], initialString[2], initialDouble[0],
+            ammunition = Const.ammunitionFactory.produce(initialString[1], initialString[2], initialDouble[0],
                     initialDouble[1], initialDouble[2], initialDouble[3], initialDouble[4], initialDouble[5]);
 
             knightAmmunition.put(initialString[0], ammunition);
@@ -28,9 +28,9 @@ public class input {
     }
 
     double[] extractDoubleArray(String[] initialString) {
-        double[] initialDouble = new double[initialString.length - Controller.STRING_INPUT_PARAMETERS];
-        for (int i = Controller.STRING_INPUT_PARAMETERS; i <= initialString.length - 1; i++) {
-            initialDouble[i - Controller.STRING_INPUT_PARAMETERS] = Double.parseDouble(initialString[i]);
+        double[] initialDouble = new double[initialString.length - Const.STRING_INPUT_PARAMETERS];
+        for (int i = Const.STRING_INPUT_PARAMETERS; i <= initialString.length - 1; i++) {
+            initialDouble[i - Const.STRING_INPUT_PARAMETERS] = Double.parseDouble(initialString[i]);
         }
 
         return initialDouble;
