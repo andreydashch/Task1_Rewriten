@@ -42,4 +42,5 @@ import ua.training.task1.view.View;
 public class TextConst {
     public static final String INCORRECT_FILE_STRUCTURE_ERROR =
             View.resourceBundle.getString("INCORRECT_FILE_STRUCTURE_ERROR");
+    public static final String NEW_LINE = "\n";
 }

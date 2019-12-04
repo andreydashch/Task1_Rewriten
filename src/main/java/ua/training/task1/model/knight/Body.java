@@ -55,7 +55,11 @@ class Body {
     }
 
     public void wearAmmunitionOnExistBodyPart(String bodyPartName, Ammunition ammunition) {
-        findBodyPart(bodyPartName).setAmmunition(ammunition);
+        BodyPart bodyPart = findBodyPart(bodyPartName);
+
+        if (bodyPart != null) {
+            bodyPart.setAmmunition(ammunition);
+        }
     }
 
     public Ammunition getAmmunitionFromBodyPart(String bodyPartName) {
