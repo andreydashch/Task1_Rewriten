@@ -36,11 +36,6 @@ package ua.training.task1.controller;
 
 import ua.training.task1.model.knight.Knight;
 import ua.training.task1.view.View;
-import ua.training.task1.view.constant.ViewSetUpConst;
-
-import java.util.HashSet;
-import java.util.ResourceBundle;
-import java.util.Scanner;
 
 /**
  * @author      Dashchyk Andrey
@@ -50,8 +45,6 @@ public class Controller {
     private final Output output = new Output(this);
     private final Input input = new Input();
     private View view;
-
-    ResourceBundle resourceBundle;
 
     public Controller(View view){
         this.view = view;
