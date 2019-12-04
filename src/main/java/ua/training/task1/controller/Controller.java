@@ -36,7 +36,10 @@ package ua.training.task1.controller;
 
 import ua.training.task1.model.knight.Knight;
 import ua.training.task1.view.View;
+import ua.training.task1.view.constant.ViewSetUpConst;
 
+import java.util.HashSet;
+import java.util.ResourceBundle;
 import java.util.Scanner;
 
 /**
@@ -48,16 +51,17 @@ public class Controller {
     private final Input input = new Input();
     private View view;
 
+    ResourceBundle resourceBundle;
+
     public Controller(View view){
         this.view = view;
     }
 
     public void processUser(){
         Knight knight;
-        Scanner sc = new Scanner(System.in);
 
 
-        knight = input.createKnight();
+        knight = input.createKnight(Const.CONFIG_FILE_NAME);
 
         output.printAmmunitionArrayList(knight.sortAmmunitionByPrice());
     }

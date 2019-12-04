@@ -53,9 +53,7 @@ public class Output {
     }
 
     void printAmmunitionArrayList(ArrayList<Ammunition> ammunitionArray) {
-        int index;
         int arrayLength, stringLength;
-        String ammunitionString;
         StringBuilder[] lines;
 
         arrayLength = countStringLines(ammunitionArray.get(0).toString());

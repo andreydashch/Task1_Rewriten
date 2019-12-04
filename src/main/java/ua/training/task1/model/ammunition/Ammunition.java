@@ -43,16 +43,14 @@ public class Ammunition {
     protected String name;
     protected double weight;
     protected double price;
-    protected double wearOn;
     protected double sliceDamage;
     protected double pierceDamage;
     protected double impactDamage;
 
-    protected Ammunition(String name, double weight, double price, double wearOn) {
+    protected Ammunition(String name, double weight, double price) {
         this.name = name;
         this.weight = weight;
         this.price = price;
-        this.wearOn = wearOn;
     }
 
     public String getName() {
@@ -65,10 +63,6 @@ public class Ammunition {
 
     public double getPrice() {
         return price;
-    }
-
-    public double getWearOn() {
-        return wearOn;
     }
 
     public double getSliceDamage() {

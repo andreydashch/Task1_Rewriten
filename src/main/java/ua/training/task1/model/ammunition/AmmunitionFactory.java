@@ -65,16 +65,16 @@ public final class AmmunitionFactory {
      * @param impactDepends shared param for constructors
      * @return SubClass as SuperClass
      */
-    public Ammunition produce(String type, String name, double weight, double price, double wearOn,
+    public Ammunition produce(String type, String name, double weight, double price,
                               double sliceDepends, double pierceDepends, double impactDepends) {
         Ammunition instance;
 
         switch (type) {
             case "Armor":
-                instance = new Armor(name, weight, price, wearOn, sliceDepends, pierceDepends, impactDepends);
+                instance = new Armor(name, weight, price, sliceDepends, pierceDepends, impactDepends);
                 break;
             case "Weapon":
-                instance = new Weapon(name, weight, price, wearOn, sliceDepends, pierceDepends, impactDepends);
+                instance = new Weapon(name, weight, price, sliceDepends, pierceDepends, impactDepends);
                 break;
             default:
                 instance = null;

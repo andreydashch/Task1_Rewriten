@@ -38,9 +38,9 @@ package ua.training.task1.model.ammunition;
  */
 public class Weapon extends Ammunition{
 
-    protected Weapon(String name, double weight, double price, double wearOn,
+    protected Weapon(String name, double weight, double price,
                      double sliceDamage, double pierceDamage, double impactDamage) {
-        super(name, weight, price, wearOn);
+        super(name, weight, price);
         this.sliceDamage = sliceDamage;
         this.pierceDamage = pierceDamage;
         this.impactDamage = impactDamage;

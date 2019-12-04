@@ -38,6 +38,10 @@ import ua.training.task1.model.ammunition.Ammunition;
 import ua.training.task1.model.knight.Knight;
 
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.ResourceBundle;
+
+import static ua.training.task1.view.View.resourceBundle;
 
 /**
  * @author      Dashchyk Andrey
@@ -46,12 +50,29 @@ public class Input {
     public Input() {
     }
 
-    Knight createKnight() {
+    Knight createKnight(String configFileName) {
         HashMap<String, Ammunition> knightAmmunition;
 
-        knightAmmunition = createKnightAmmunitionMap();
+        String[] ammunitionArray = getAmmunitionStringArray(configFileName);
+
+        knightAmmunition = createKnightAmmunitionMap(ammunitionArray);
 
         return new Knight(knightAmmunition);
+    }
+
+    private String[] getAmmunitionStringArray(String configFileName) {
+        resourceBundle = ResourceBundle.getBundle(configFileName);
+        HashSet<String> keySet = new HashSet<>(resourceBundle.keySet());
+        int index = 0;
+
+        String[] ammunitionArray = new String[keySet.size()];
+
+        for(String key : keySet.toArray(ammunitionArray)) {
+            ammunitionArray[index] = resourceBundle.getString(key);
+            index ++;
+        }
+
+        return ammunitionArray;
     }
 
     private HashMap<String, Ammunition> createKnightAmmunitionMap(String[] ammunitionArray) {
@@ -65,7 +86,7 @@ public class Input {
             initialDouble = extractDoubleArray(initialString);
 
             ammunition = Const.ammunitionFactory.produce(initialString[1], initialString[2], initialDouble[0],
-                    initialDouble[1], initialDouble[2], initialDouble[3], initialDouble[4], initialDouble[5]);
+                    initialDouble[1], initialDouble[2], initialDouble[3], initialDouble[4]);
 
             knightAmmunition.put(initialString[0], ammunition);
         }
