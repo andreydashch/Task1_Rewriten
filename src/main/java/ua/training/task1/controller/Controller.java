@@ -34,11 +34,9 @@
 
 package ua.training.task1.controller;
 
-import ua.training.task1.model.ammunition.Ammunition;
 import ua.training.task1.model.knight.Knight;
 import ua.training.task1.view.View;
 
-import java.util.HashMap;
 import java.util.Scanner;
 
 /**
@@ -46,23 +44,21 @@ import java.util.Scanner;
  */
 public class Controller {
     static final String INPUT_SEPARATOR = ";";
-    private final ua.training.task1.controller.output output = new output(this);
-    private final ua.training.task1.controller.input input = new input();
+    private final Output output = new Output(this);
+    private final Input input = new Input();
     private View view;
-    private Knight knight;
 
-    public Controller(Knight knight, View view){
+    public Controller(View view){
         this.view = view;
-        this.knight = knight;
     }
 
     public void processUser(){
+        Knight knight;
         Scanner sc = new Scanner(System.in);
-        HashMap<String, Ammunition> knightAmmunition;
 
-        knightAmmunition = input.createKnightAmmunitionMap();
 
-        knight = new Knight(knightAmmunition);
+        knight = input.createKnight();
+
         output.printAmmunitionArrayList(knight.sortAmmunitionByPrice());
     }
 
