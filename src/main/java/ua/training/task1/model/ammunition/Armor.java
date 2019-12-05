@@ -46,15 +46,4 @@ public class Armor extends Ammunition{
         this.pierceDamage = -1 * pierceDamage;
         this.impactDamage = -1 * impactDamage;
     }
-
-    @Override
-    public String toString() {
-        return "Armor\n"+
-                getName() + "\n"+
-                getPrice() + " Coins\n"+
-                getWeight() + " Kilos\n"+
-                getSliceDamage() + " SliceResist\n"+
-                getPierceDamage() + " PierceResist\n"+
-                getImpactDamage() + " ImpactResist\n";
-    }
 }

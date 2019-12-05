@@ -40,6 +40,9 @@ package ua.training.task1.model.ammunition;
  * @author      Dashchyk Andrey
  */
 public class Ammunition {
+    String NEW_LINE = "\n";
+    String GAP = " ";
+
     protected String name;
     protected double weight;
     protected double price;
@@ -79,9 +82,44 @@ public class Ammunition {
 
     @Override
     public String toString() {
-        return "Equipment\n" +
-                getName() + "\n" +
-                getPrice() + " Coins\n" +
-                getWeight() + " Kilos\n";
+        int length = 20;
+
+        String fullClassPath = getClass().getName();
+
+        return  formatOutputLine(fullClassPath, length) +
+                formatOutputLine(getName(), length) +
+                formatOutputLine("Coins", getPrice(), length) +
+                formatOutputLine("Kilos", getWeight(), length);
+    }
+
+    private String formatOutputLine(String string, int length) {
+        StringBuilder line = new StringBuilder(length);
+        line.append(string);
+
+        length -= NEW_LINE.length();
+        for(int i=string.length();i <= length;i ++) {
+            line.append(GAP);
+        }
+        line.append(NEW_LINE);
+
+        return  line.toString();
+    }
+
+    private String formatOutputLine(String string, double value, int length) {
+        String valueString;
+        valueString = String.format("%06.2f", value);
+        length -= valueString.length();
+
+        StringBuilder line = new StringBuilder(length);
+        line.append(string);
+
+        length -= NEW_LINE.length() + valueString.length();
+        for(int i=string.length();i <= length - 1;i ++) {
+            line.append(GAP);
+        }
+
+        line.append(valueString);
+        line.append(NEW_LINE);
+        return  line.toString();
     }
 }

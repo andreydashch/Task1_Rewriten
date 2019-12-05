@@ -39,7 +39,6 @@ import ua.training.task1.model.ammunition.Armor;
 import ua.training.task1.model.ammunition.Weapon;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
 

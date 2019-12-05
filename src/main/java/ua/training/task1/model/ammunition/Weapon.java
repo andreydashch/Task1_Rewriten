@@ -46,15 +46,6 @@ public class Weapon extends Ammunition{
         this.impactDamage = impactDamage;
     }
 
-    @Override
-    public String toString() {
-        return "Weapon\n"+
-                getName() + "\n"+
-                getPrice() + " Coins\n"+
-                getWeight() + " Kilos\n"+
-                getSliceDamage() + " SliceDamage\n"+
-                getPierceDamage() + " PierceDamage\n"+
-                getImpactDamage() + " ImpactDamage\n";
-    }
+
 
 }
