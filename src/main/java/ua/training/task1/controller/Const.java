@@ -41,6 +41,6 @@ import ua.training.task1.model.ammunition.AmmunitionFactory;
  */
 public class Const {
     static final AmmunitionFactory ammunitionFactory = AmmunitionFactory.getInstance();
-    static final String CONFIG_FILE_NAME = "config";
+    static final String CONFIG_FILE_NAME = "ammunition";
     static final int STRING_INPUT_PARAMETERS = 3;
 }

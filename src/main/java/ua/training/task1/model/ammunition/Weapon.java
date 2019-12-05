@@ -37,15 +37,21 @@ package ua.training.task1.model.ammunition;
  * @author      Dashchyk Andrey
  */
 public class Weapon extends Ammunition{
-
+    private boolean sharpening;
     protected Weapon(String name, double weight, double price,
                      double sliceDamage, double pierceDamage, double impactDamage) {
         super(name, weight, price);
+        this.sharpening = false;
         this.sliceDamage = sliceDamage;
         this.pierceDamage = pierceDamage;
         this.impactDamage = impactDamage;
     }
 
-
+    public void sharpen(double coefficient) {
+        if (!sharpening) {
+            sharpening = true;
+            sliceDamage *= coefficient;
+        }
+    }
 
 }

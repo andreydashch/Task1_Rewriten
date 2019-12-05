@@ -43,5 +43,5 @@ public class TextConst {
     public static final String INCORRECT_FILE_STRUCTURE_ERROR =
             View.resourceBundle.getString("INCORRECT_FILE_STRUCTURE_ERROR");
     public static final String NEW_LINE = "\n";
-    public static final String TEXT_SEPARATOR = " ";
+    public static final String TABLE_SEPARATOR = "\t";
 }

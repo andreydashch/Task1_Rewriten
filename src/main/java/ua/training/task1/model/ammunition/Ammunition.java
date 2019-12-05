@@ -40,9 +40,6 @@ package ua.training.task1.model.ammunition;
  * @author      Dashchyk Andrey
  */
 public class Ammunition {
-    String NEW_LINE = "\n";
-    String GAP = " ";
-
     protected String name;
     protected double weight;
     protected double price;
@@ -57,65 +54,26 @@ public class Ammunition {
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public double getWeight() {
-        return weight;
+        return this.weight;
     }
 
     public double getPrice() {
-        return price;
+        return this.price;
     }
 
     public double getSliceDamage() {
-        return sliceDamage;
+        return this.sliceDamage;
     }
 
     public double getPierceDamage() {
-        return pierceDamage;
+        return this.pierceDamage;
     }
 
     public double getImpactDamage() {
-        return impactDamage;
-    }
-
-    @Override
-    public String toString() {
-        int length = 15;
-
-        String[] fullClassPath = getClass().getName().split("\\.");
-
-        return  formatOutputLine(fullClassPath[fullClassPath.length - 1], getName(), length)+
-                formatOutputLine("Param", "Amount", length) +
-                formatOutputLine("Coins", String.format("%06.2f", getPrice()), length) +
-                formatOutputLine("Kilos", String.format("%06.2f",getWeight()), length);
-    }
-
-    private String formatOutputLine(String string, int length) {
-        StringBuilder line = new StringBuilder(length);
-        line.append(string);
-
-        length -= NEW_LINE.length();
-        for(int i=string.length();i <= length - 1;i ++) {
-            line.append(GAP);
-        }
-        line.append(NEW_LINE);
-
-        return  line.toString();
-    }
-
-    private String formatOutputLine(String string, String value, int length) {
-        StringBuilder line = new StringBuilder(length);
-        line.append(string);
-
-        length -= NEW_LINE.length() + value.length();
-        for(int i=string.length();i <= length - 1;i ++) {
-            line.append(GAP);
-        }
-
-        line.append(value);
-        line.append(NEW_LINE);
-        return  line.toString();
+        return this.impactDamage;
     }
 }

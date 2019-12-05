@@ -57,6 +57,9 @@ public class Controller {
         knight = input.createKnight(Const.CONFIG_FILE_NAME);
 
         output.printAmmunitionArrayList(knight.sortAmmunitionByPrice());
+        knight.sharpenAllWeapons(2);
+        output.printAmmunitionArrayList(knight.sortAmmunitionByPrice());
+
     }
 
 

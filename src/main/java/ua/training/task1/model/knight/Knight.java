@@ -58,6 +58,7 @@ public class Knight {
         bodyPartsNames.add("head");
         bodyPartsNames.add("chest");
         bodyPartsNames.add("arms");
+        bodyPartsNames.add("legs");
         bodyPartsNames.add("leftHand");
         bodyPartsNames.add("rightHand");
     }
@@ -107,6 +108,18 @@ public class Knight {
         return ammunitionList;
     }
 
+    public void sharpenAllWeapons(double coefficient) {
+        Ammunition ammunition;
+
+        for(String key : body.getBodyPartsNames()) {
+            ammunition = body.getAmmunitionFromBodyPart(key);
+
+            if (ammunition instanceof Weapon) {
+                ((Weapon) ammunition).sharpen(coefficient);
+            }
+        }
+    }
+
     public double countResistPerSecond() {
         return countDamageAmountPerAttack(Armor.class);
     }
@@ -115,7 +128,7 @@ public class Knight {
         return countDamageAmountPerAttack(Weapon.class);
     }
 
-    private double countDamageAmountPerAttack(Class subClass) {
+    private double countDamageAmountPerAttack(Class<?> subClass) {
         double damageAmountPerSecond = 0;
         Ammunition ammunition;
 
