@@ -66,9 +66,9 @@ public class TextConst {
         COINS = View.resourceBundle.getString("COINS");
         KILOS = View.resourceBundle.getString("KILOS");
         DAMAGE = View.resourceBundle.getString("DAMAGE");
-        SLICE_DAMAGE = View.resourceBundle.getString("SLICE_DAMAGE") + DAMAGE;
-        PIERCE_DAMAGE = View.resourceBundle.getString("PIERCE_DAMAGE") + DAMAGE;
-        IMPACT_DAMAGE = View.resourceBundle.getString("IMPACT_DAMAGE") + DAMAGE;
+        SLICE_DAMAGE = View.resourceBundle.getString("SLICE") + DAMAGE;
+        PIERCE_DAMAGE = View.resourceBundle.getString("PIERCE") + DAMAGE;
+        IMPACT_DAMAGE = View.resourceBundle.getString("IMPACT") + DAMAGE;
         OUTPUT_TABLE_WIDTH = Integer.parseInt(View.resourceBundle.getString("OUTPUT_TABLE_WIDTH"));
     }                                                    
 }
