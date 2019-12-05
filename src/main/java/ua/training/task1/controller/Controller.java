@@ -41,7 +41,6 @@ import ua.training.task1.view.View;
  * @author      Dashchyk Andrey
  */
 public class Controller {
-    static final String INPUT_SEPARATOR = ";";
     private final Output output = new Output(this);
     private final Input input = new Input();
     private View view;
@@ -54,7 +53,7 @@ public class Controller {
         Knight knight;
 
 
-        knight = input.createKnight();
+        knight = input.createKnight(Const.CONFIG_FILE_NAME);
 
         knight.sharpenAllWeapons(2);
         output.printAmmunitionArrayList(knight.sortAmmunitionByPrice());

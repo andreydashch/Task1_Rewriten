@@ -32,7 +32,7 @@
  */
 
 
-package ua.training.task1.view.constant;
+package ua.training.task1.view;
 
 /**
  * @author      Dashchyk Andrey

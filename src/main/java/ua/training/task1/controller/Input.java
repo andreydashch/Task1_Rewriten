@@ -49,18 +49,18 @@ public class Input {
     public Input() {
     }
 
-    Knight createKnight() {
+    Knight createKnight(String fileName) {
         HashMap<String, Ammunition> knightAmmunition;
 
-        String[] ammunitionArray = getAmmunitionStringArray(Const.CONFIG_FILE_NAME);
+        String[] ammunitionArray = getAmmunitionFromResourseBundle(fileName);
 
         knightAmmunition = createKnightAmmunitionMap(ammunitionArray);
 
         return new Knight(knightAmmunition);
     }
 
-    private String[] getAmmunitionStringArray(String configFileName) {
-        ResourceBundle resourceBundle = ResourceBundle.getBundle(configFileName);
+    private String[] getAmmunitionFromResourseBundle(String fileName) {
+        ResourceBundle resourceBundle = ResourceBundle.getBundle(fileName);
         HashSet<String> keySet = new HashSet<>(resourceBundle.keySet());
         int index = 0;
 
@@ -81,7 +81,7 @@ public class Input {
 
 
         for (String ammunitionInitial : ammunitionArray) {
-            String[] initialString = ammunitionInitial.split(Controller.INPUT_SEPARATOR);
+            String[] initialString = ammunitionInitial.split(Const.INPUT_SEPARATOR);
             initialDouble = extractDoubleArray(initialString);
 
             ammunition = Const.ammunitionFactory.produce(initialString[1], initialString[2], initialDouble[0],

@@ -36,7 +36,7 @@ package ua.training.task1.controller;
 
 import ua.training.task1.model.ammunition.Ammunition;
 import ua.training.task1.model.knight.Knight;
-import ua.training.task1.view.constant.TextConst;
+import ua.training.task1.view.TextOutput;
 
 import java.util.ArrayList;
 
@@ -57,7 +57,7 @@ public class Output {
         StringBuilder[] lines;
 
         arrayLength = Ammunition.class.getDeclaredFields().length + 1;
-        stringLength = TextConst.OUTPUT_TABLE_WIDTH;
+        stringLength = TextOutput.OUTPUT_TABLE_WIDTH;
         stringLength *= Knight.getBodyPartsNames().size();
 
         lines = initialiseStringBuilderString(arrayLength, stringLength);
@@ -75,9 +75,9 @@ public class Output {
             index = 0;
             ammunitionString = makeAmmunitionString(ammunition);
 
-            for (String linePart : ammunitionString.split(TextConst.NEW_LINE)) {
+            for (String linePart : ammunitionString.split(TextOutput.NEW_LINE)) {
                 lines[index].append(linePart);
-                lines[index].append(TextConst.TABLE_SEPARATOR);
+                lines[index].append(TextOutput.TABLE_SEPARATOR);
                 index ++;
             }
         }
@@ -95,12 +95,12 @@ public class Output {
 
     private String makeAmmunitionString(Ammunition ammunition) {
         return  formatTitleLine(getTitle(ammunition)) +
-                formatLine(TextConst.PARAM, TextConst.AMOUNT) +
-                formatLine(TextConst.COINS, String.format("%06.2f", ammunition.getPrice())) +
-                formatLine(TextConst.KILOS, String.format("%06.2f", ammunition.getWeight())) +
-                formatLine(TextConst.SLICE_DAMAGE, String.format("%+06.2f", ammunition.getSliceDamage())) +
-                formatLine(TextConst.PIERCE_DAMAGE, String.format("%+06.2f", ammunition.getPierceDamage())) +
-                formatLine(TextConst.IMPACT_DAMAGE, String.format("%+06.2f", ammunition.getImpactDamage()));
+                formatLine(TextOutput.PARAM, TextOutput.AMOUNT) +
+                formatLine(TextOutput.COINS, String.format("%06.2f", ammunition.getPrice())) +
+                formatLine(TextOutput.KILOS, String.format("%06.2f", ammunition.getWeight())) +
+                formatLine(TextOutput.SLICE_DAMAGE, String.format("%+06.2f", ammunition.getSliceDamage())) +
+                formatLine(TextOutput.PIERCE_DAMAGE, String.format("%+06.2f", ammunition.getPierceDamage())) +
+                formatLine(TextOutput.IMPACT_DAMAGE, String.format("%+06.2f", ammunition.getImpactDamage()));
     }
 
 
@@ -115,38 +115,38 @@ public class Output {
 
     String formatTitleLine(String string) {
         int startGap = 0;
-        int stopGap = (TextConst.OUTPUT_TABLE_WIDTH - string.length()) / 2;
-        StringBuilder line = new StringBuilder(TextConst.OUTPUT_TABLE_WIDTH);
+        int stopGap = (TextOutput.OUTPUT_TABLE_WIDTH - string.length()) / 2;
+        StringBuilder line = new StringBuilder(TextOutput.OUTPUT_TABLE_WIDTH);
 
         fillLineWithGAP(line, startGap, stopGap);
         line.append(string);
 
         startGap = stopGap + string.length();
-        stopGap = TextConst.OUTPUT_TABLE_WIDTH - TextConst.NEW_LINE.length();
+        stopGap = TextOutput.OUTPUT_TABLE_WIDTH - TextOutput.NEW_LINE.length();
 
         fillLineWithGAP(line, startGap, stopGap);
-        line.append(TextConst.NEW_LINE);
+        line.append(TextOutput.NEW_LINE);
 
         return line.toString();
     }
 
     String formatLine(String string, String value) {
-        int length = TextConst.OUTPUT_TABLE_WIDTH;
+        int length = TextOutput.OUTPUT_TABLE_WIDTH;
         StringBuilder line = new StringBuilder(length);
         line.append(string);
 
-        length -= TextConst.NEW_LINE.length() + value.length();
+        length -= TextOutput.NEW_LINE.length() + value.length();
         fillLineWithGAP(line, string.length(), length);
 
         line.append(value);
-        line.append(TextConst.NEW_LINE);
+        line.append(TextOutput.NEW_LINE);
 
         return line.toString();
     }
 
     void fillLineWithGAP(StringBuilder line, int start, int stop) {
         for (int i = start; i <= stop; i++) {
-            line.append(TextConst.TABLE_GAP_FILLER);
+            line.append(TextOutput.TABLE_GAP_FILLER);
         }
     }
 }

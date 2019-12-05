@@ -32,14 +32,14 @@
  */
 
 
-package ua.training.task1.view.constant;
+package ua.training.task1.view;
 
 import ua.training.task1.view.View;
 
 /**
  * @author      Dashchyk Andrey
  */
-public class TextConst {
+public class TextOutput {
     public static String TABLE_GAP_FILLER;
     public static String NEW_LINE;
     public static String TABLE_SEPARATOR;
