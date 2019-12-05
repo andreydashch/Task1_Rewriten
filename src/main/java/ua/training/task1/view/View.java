@@ -34,6 +34,7 @@
 
 package ua.training.task1.view;
 
+import ua.training.task1.view.constant.TextConst;
 import ua.training.task1.view.constant.ViewSetUpConst;
 
 import java.util.Locale;
@@ -46,14 +47,13 @@ public class View {
     public static ResourceBundle resourceBundle;
 
     static {
-        Locale locale;
-
-        locale = new Locale(ViewSetUpConst.DEFAULT_LOCALE);
-        resourceBundle = ResourceBundle.getBundle(ViewSetUpConst.MESSAGE_BUNDLE_NAME, locale);
+        resourceBundle = ResourceBundle.getBundle(ViewSetUpConst.MESSAGE_BUNDLE_NAME);
     }
 
-    public void changeLanguage(String language) {
-        resourceBundle = ResourceBundle.getBundle(ViewSetUpConst.MESSAGE_BUNDLE_NAME, new Locale(language));
+    public static void changeLanguage(String language) {
+        resourceBundle = ResourceBundle.getBundle(
+                ViewSetUpConst.MESSAGE_BUNDLE_NAME, new Locale(language));
+        TextConst.update();
     }
 
     /**

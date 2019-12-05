@@ -48,5 +48,9 @@ public class App
         Controller controller = new Controller(view);
 
         controller.processUser();
+
+        View.changeLanguage("ua");
+
+        controller.processUser();
     }
 }

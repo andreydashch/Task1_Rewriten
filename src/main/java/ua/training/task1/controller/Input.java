@@ -41,7 +41,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.ResourceBundle;
 
-import static ua.training.task1.view.View.resourceBundle;
 
 /**
  * @author      Dashchyk Andrey
@@ -50,10 +49,10 @@ public class Input {
     public Input() {
     }
 
-    Knight createKnight(String configFileName) {
+    Knight createKnight() {
         HashMap<String, Ammunition> knightAmmunition;
 
-        String[] ammunitionArray = getAmmunitionStringArray(configFileName);
+        String[] ammunitionArray = getAmmunitionStringArray(Const.CONFIG_FILE_NAME);
 
         knightAmmunition = createKnightAmmunitionMap(ammunitionArray);
 
@@ -61,7 +60,7 @@ public class Input {
     }
 
     private String[] getAmmunitionStringArray(String configFileName) {
-        resourceBundle = ResourceBundle.getBundle(configFileName);
+        ResourceBundle resourceBundle = ResourceBundle.getBundle(configFileName);
         HashSet<String> keySet = new HashSet<>(resourceBundle.keySet());
         int index = 0;
 

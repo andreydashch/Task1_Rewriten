@@ -40,8 +40,35 @@ import ua.training.task1.view.View;
  * @author      Dashchyk Andrey
  */
 public class TextConst {
-    public static final String INCORRECT_FILE_STRUCTURE_ERROR =
-            View.resourceBundle.getString("INCORRECT_FILE_STRUCTURE_ERROR");
-    public static final String NEW_LINE = "\n";
-    public static final String TABLE_SEPARATOR = "\t";
+    public static String TABLE_GAP_FILLER;
+    public static String NEW_LINE;
+    public static String TABLE_SEPARATOR;
+    public static String AMOUNT;
+    public static String PARAM;
+    public static String COINS;
+    public static String KILOS;
+    public static String DAMAGE;
+    public static String SLICE_DAMAGE;
+    public static String PIERCE_DAMAGE;
+    public static String IMPACT_DAMAGE;
+    public static int OUTPUT_TABLE_WIDTH;
+
+    static {
+        update();
+    }
+
+    public static void update() {
+        TABLE_GAP_FILLER = View.resourceBundle.getString("TABLE_GAP_FILLER");
+        NEW_LINE = View.resourceBundle.getString("NEW_LINE");
+        TABLE_SEPARATOR = View.resourceBundle.getString("TABLE_SEPARATOR");
+        AMOUNT = View.resourceBundle.getString("AMOUNT");
+        PARAM = View.resourceBundle.getString("PARAM");
+        COINS = View.resourceBundle.getString("COINS");
+        KILOS = View.resourceBundle.getString("KILOS");
+        DAMAGE = View.resourceBundle.getString("DAMAGE");
+        SLICE_DAMAGE = View.resourceBundle.getString("SLICE_DAMAGE") + DAMAGE;
+        PIERCE_DAMAGE = View.resourceBundle.getString("PIERCE_DAMAGE") + DAMAGE;
+        IMPACT_DAMAGE = View.resourceBundle.getString("IMPACT_DAMAGE") + DAMAGE;
+        OUTPUT_TABLE_WIDTH = Integer.parseInt(View.resourceBundle.getString("OUTPUT_TABLE_WIDTH"));
+    }                                                    
 }

@@ -39,16 +39,13 @@ import ua.training.task1.model.knight.Knight;
 import ua.training.task1.view.constant.TextConst;
 
 import java.util.ArrayList;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 /**
  * @author      Dashchyk Andrey
  */
 public class Output {
-    int LINE_LENGTH = 21;
-    String NEW_LINE = "\n";
-    String GAP = " ";
+
+
     private final Controller controller;
 
     public Output(Controller controller) {
@@ -60,7 +57,7 @@ public class Output {
         StringBuilder[] lines;
 
         arrayLength = Ammunition.class.getDeclaredFields().length + 1;
-        stringLength = LINE_LENGTH;
+        stringLength = TextConst.OUTPUT_TABLE_WIDTH;
         stringLength *= Knight.getBodyPartsNames().size();
 
         lines = initialiseStringBuilderString(arrayLength, stringLength);
@@ -96,32 +93,19 @@ public class Output {
         return stringBuilderArray;
     }
 
-    private int countStringLines(String string) {
-        int lines = 1;
-        Matcher m = Pattern.compile(TextConst.NEW_LINE).matcher(string);
-
-        while (m.find()) {
-            lines++;
-        }
-
-        return lines;
-    }
-
     private String makeAmmunitionString(Ammunition ammunition) {
-        String title = getTitle(ammunition);
-
-        return  formatTitleLine(title, LINE_LENGTH) +
-                formatLine("Param", "Amount", LINE_LENGTH) +
-                formatLine("Coins", String.format("%06.2f", ammunition.getPrice()), LINE_LENGTH) +
-                formatLine("Kilos", String.format("%06.2f", ammunition.getWeight()), LINE_LENGTH) +
-                formatLine("sliceDamage", String.format("%+06.2f", ammunition.getSliceDamage()), LINE_LENGTH) +
-                formatLine("pierceDamage", String.format("%+06.2f", ammunition.getPierceDamage()), LINE_LENGTH) +
-                formatLine("impactDamage", String.format("%+06.2f", ammunition.getImpactDamage()), LINE_LENGTH);
+        return  formatTitleLine(getTitle(ammunition)) +
+                formatLine(TextConst.PARAM, TextConst.AMOUNT) +
+                formatLine(TextConst.COINS, String.format("%06.2f", ammunition.getPrice())) +
+                formatLine(TextConst.KILOS, String.format("%06.2f", ammunition.getWeight())) +
+                formatLine(TextConst.SLICE_DAMAGE, String.format("%+06.2f", ammunition.getSliceDamage())) +
+                formatLine(TextConst.PIERCE_DAMAGE, String.format("%+06.2f", ammunition.getPierceDamage())) +
+                formatLine(TextConst.IMPACT_DAMAGE, String.format("%+06.2f", ammunition.getImpactDamage()));
     }
 
 
     String getTitle(Ammunition ammunition) {
-        String[] fullClassPath = getClass().getName().split("\\.");
+        String[] fullClassPath = ammunition.getClass().getName().split("\\.");
 
         return ammunition.getName() +
                 '(' +
@@ -129,34 +113,40 @@ public class Output {
                 ')';
     }
 
-    String formatTitleLine(String string, int length) {
-        StringBuilder line = new StringBuilder(length);
-        int firstFinishPosition = (length - string.length()) / 2;
+    String formatTitleLine(String string) {
+        int startGap = 0;
+        int stopGap = (TextConst.OUTPUT_TABLE_WIDTH - string.length()) / 2;
+        StringBuilder line = new StringBuilder(TextConst.OUTPUT_TABLE_WIDTH);
 
-        fillLineWithGAP(line, 0, firstFinishPosition);
+        fillLineWithGAP(line, startGap, stopGap);
         line.append(string);
-        fillLineWithGAP(line, firstFinishPosition + string.length(), length - NEW_LINE.length());
-        line.append(NEW_LINE);
+
+        startGap = stopGap + string.length();
+        stopGap = TextConst.OUTPUT_TABLE_WIDTH - TextConst.NEW_LINE.length();
+
+        fillLineWithGAP(line, startGap, stopGap);
+        line.append(TextConst.NEW_LINE);
 
         return line.toString();
     }
 
-    String formatLine(String string, String value, int length) {
+    String formatLine(String string, String value) {
+        int length = TextConst.OUTPUT_TABLE_WIDTH;
         StringBuilder line = new StringBuilder(length);
         line.append(string);
 
-        length -= NEW_LINE.length() + value.length();
+        length -= TextConst.NEW_LINE.length() + value.length();
         fillLineWithGAP(line, string.length(), length);
 
         line.append(value);
-        line.append(NEW_LINE);
+        line.append(TextConst.NEW_LINE);
 
         return line.toString();
     }
 
     void fillLineWithGAP(StringBuilder line, int start, int stop) {
         for (int i = start; i <= stop; i++) {
-            line.append(GAP);
+            line.append(TextConst.TABLE_GAP_FILLER);
         }
     }
 }
