@@ -82,14 +82,14 @@ public class Ammunition {
 
     @Override
     public String toString() {
-        int length = 20;
+        int length = 15;
 
-        String fullClassPath = getClass().getName();
+        String[] fullClassPath = getClass().getName().split("\\.");
 
-        return  formatOutputLine(fullClassPath, length) +
-                formatOutputLine(getName(), length) +
-                formatOutputLine("Coins", getPrice(), length) +
-                formatOutputLine("Kilos", getWeight(), length);
+        return  formatOutputLine(fullClassPath[fullClassPath.length - 1], getName(), length)+
+                formatOutputLine("Param", "Amount", length) +
+                formatOutputLine("Coins", String.format("%06.2f", getPrice()), length) +
+                formatOutputLine("Kilos", String.format("%06.2f",getWeight()), length);
     }
 
     private String formatOutputLine(String string, int length) {
@@ -97,7 +97,7 @@ public class Ammunition {
         line.append(string);
 
         length -= NEW_LINE.length();
-        for(int i=string.length();i <= length;i ++) {
+        for(int i=string.length();i <= length - 1;i ++) {
             line.append(GAP);
         }
         line.append(NEW_LINE);
@@ -105,20 +105,16 @@ public class Ammunition {
         return  line.toString();
     }
 
-    private String formatOutputLine(String string, double value, int length) {
-        String valueString;
-        valueString = String.format("%06.2f", value);
-        length -= valueString.length();
-
+    private String formatOutputLine(String string, String value, int length) {
         StringBuilder line = new StringBuilder(length);
         line.append(string);
 
-        length -= NEW_LINE.length() + valueString.length();
+        length -= NEW_LINE.length() + value.length();
         for(int i=string.length();i <= length - 1;i ++) {
             line.append(GAP);
         }
 
-        line.append(valueString);
+        line.append(value);
         line.append(NEW_LINE);
         return  line.toString();
     }
