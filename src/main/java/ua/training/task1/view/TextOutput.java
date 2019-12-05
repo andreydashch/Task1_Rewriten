@@ -34,8 +34,6 @@
 
 package ua.training.task1.view;
 
-import ua.training.task1.view.View;
-
 /**
  * @author      Dashchyk Andrey
  */
@@ -57,7 +55,7 @@ public class TextOutput {
         update();
     }
 
-    public static void update() {
+    static void update() {
         TABLE_GAP_FILLER = View.resourceBundle.getString("TABLE_GAP_FILLER");
         NEW_LINE = View.resourceBundle.getString("NEW_LINE");
         TABLE_SEPARATOR = View.resourceBundle.getString("TABLE_SEPARATOR");
