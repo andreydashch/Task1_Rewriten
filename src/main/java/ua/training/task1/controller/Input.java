@@ -52,14 +52,14 @@ public class Input {
     Knight createKnight(String fileName) {
         HashMap<String, Ammunition> knightAmmunition;
 
-        String[] ammunitionArray = getAmmunitionFromResourseBundle(fileName);
+        String[] ammunitionArray = getAmmunitionFromRecourseBundle(fileName);
 
         knightAmmunition = createKnightAmmunitionMap(ammunitionArray);
 
         return new Knight(knightAmmunition);
     }
 
-    private String[] getAmmunitionFromResourseBundle(String fileName) {
+    private String[] getAmmunitionFromRecourseBundle(String fileName) {
         ResourceBundle resourceBundle = ResourceBundle.getBundle(fileName);
         HashSet<String> keySet = new HashSet<>(resourceBundle.keySet());
         int index = 0;
