@@ -49,6 +49,8 @@ public class TextOutput {
     public static String SLICE_DAMAGE;
     public static String PIERCE_DAMAGE;
     public static String IMPACT_DAMAGE;
+    public static String DOUBLE_FORMAT;
+    public static String DOUBLE_SIGN_FORMAT;
     public static int OUTPUT_TABLE_WIDTH;
 
     static {
@@ -56,6 +58,8 @@ public class TextOutput {
     }
 
     static void update() {
+        DOUBLE_FORMAT= View.resourceBundle.getString("DOUBLE_FORMAT");
+        DOUBLE_SIGN_FORMAT = View.resourceBundle.getString("DOUBLE_SIGN_FORMAT");
         TABLE_GAP_FILLER = View.resourceBundle.getString("TABLE_GAP_FILLER");
         NEW_LINE = View.resourceBundle.getString("NEW_LINE");
         TABLE_SEPARATOR = View.resourceBundle.getString("TABLE_SEPARATOR");

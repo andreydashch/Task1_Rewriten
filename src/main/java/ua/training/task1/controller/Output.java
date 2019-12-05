@@ -96,11 +96,14 @@ public class Output {
     private String makeAmmunitionString(Ammunition ammunition) {
         return  formatTitleLine(getTitle(ammunition)) +
                 formatLine(TextOutput.PARAM, TextOutput.AMOUNT) +
-                formatLine(TextOutput.COINS, String.format("%06.2f", ammunition.getPrice())) +
-                formatLine(TextOutput.KILOS, String.format("%06.2f", ammunition.getWeight())) +
-                formatLine(TextOutput.SLICE_DAMAGE, String.format("%+06.2f", ammunition.getSliceDamage())) +
-                formatLine(TextOutput.PIERCE_DAMAGE, String.format("%+06.2f", ammunition.getPierceDamage())) +
-                formatLine(TextOutput.IMPACT_DAMAGE, String.format("%+06.2f", ammunition.getImpactDamage()));
+                formatLine(TextOutput.COINS, String.format(TextOutput.DOUBLE_FORMAT, ammunition.getPrice())) +
+                formatLine(TextOutput.KILOS, String.format(TextOutput.DOUBLE_FORMAT, ammunition.getWeight())) +
+                formatLine(TextOutput.SLICE_DAMAGE,
+                        String.format(TextOutput.DOUBLE_SIGN_FORMAT, ammunition.getSliceDamage())) +
+                formatLine(TextOutput.PIERCE_DAMAGE,
+                        String.format(TextOutput.DOUBLE_SIGN_FORMAT, ammunition.getPierceDamage())) +
+                formatLine(TextOutput.IMPACT_DAMAGE,
+                        String.format(TextOutput.DOUBLE_SIGN_FORMAT, ammunition.getImpactDamage()));
     }
 
 
