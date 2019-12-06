@@ -34,10 +34,11 @@
 
 package ua.training.task1.model.knight;
 
+import ua.training.task1.InitBodyParts;
 import ua.training.task1.model.ammunition.Ammunition;
 
+import java.util.EnumSet;
 import java.util.HashSet;
-import java.util.Set;
 
 /**
  * @author      Dashchyk Andrey
@@ -45,11 +46,11 @@ import java.util.Set;
 class Body {
     private HashSet<BodyPart> bodyParts;
 
-    public Body(Set<String> names) {
+    public Body(EnumSet<InitBodyParts> names) {
         bodyParts = new HashSet<>();
 
-        for(String name : names) {
-            bodyParts.add(new BodyPart(name));
+        for(InitBodyParts name : names) {
+            bodyParts.add(new BodyPart(name.toString()));
         }
     }
 

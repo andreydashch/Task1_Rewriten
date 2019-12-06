@@ -34,6 +34,7 @@
 
 package ua.training.task1.model.knight;
 
+import ua.training.task1.InitBodyParts;
 import ua.training.task1.model.ammunition.Ammunition;
 import ua.training.task1.model.ammunition.Armor;
 import ua.training.task1.model.ammunition.Weapon;
@@ -47,18 +48,11 @@ import java.util.*;
  * @author      Dashchyk Andrey
  */
 public class Knight {
-    private static final HashSet<String> bodyPartsNames;
+    private static final EnumSet<InitBodyParts> bodyPartsNames;
     private Body body;
 
     static {
-        bodyPartsNames = new HashSet<>();
-
-        bodyPartsNames.add("head");
-        bodyPartsNames.add("chest");
-        bodyPartsNames.add("arms");
-        bodyPartsNames.add("legs");
-        bodyPartsNames.add("leftHand");
-        bodyPartsNames.add("rightHand");
+        bodyPartsNames = EnumSet.allOf(InitBodyParts.class);
     }
 
     {
@@ -71,7 +65,7 @@ public class Knight {
         }
     }
 
-    public static HashSet<String> getBodyPartsNames() {
+    public static EnumSet<InitBodyParts> getBodyPartsNames() {
         return bodyPartsNames;
     }
 
