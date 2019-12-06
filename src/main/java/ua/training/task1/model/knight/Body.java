@@ -54,12 +54,26 @@ class Body {
         }
     }
 
+    /**
+     * If bodyPartName exist in body set ammunition to this part
+     * and do nothing if not
+     */
     public void wearAmmunitionOnExistBodyPart(String bodyPartName, Ammunition ammunition) {
         BodyPart bodyPart = findBodyPart(bodyPartName);
 
         if (bodyPart != null) {
             bodyPart.setAmmunition(ammunition);
         }
+    }
+
+    public HashSet<String> getBodyPartsNames() {
+        HashSet<String> names = new HashSet<>();
+
+        for(BodyPart bodyPart : bodyParts) {
+            names.add(bodyPart.getName());
+        }
+
+        return names;
     }
 
     public Ammunition getAmmunitionFromBodyPart(String bodyPartName) {
@@ -79,22 +93,11 @@ class Body {
 
         return  searchingBodyPart;
     }
-
-    public HashSet<String> getBodyPartsNames() {
-        HashSet<String> names = new HashSet<>();
-
-        for(BodyPart bodyPart : bodyParts) {
-            names.add(bodyPart.getName());
-        }
-
-        return names;
-    }
 }
 
 class BodyPart {
     private String name;
-    private Ammunition ammunition = null;
-
+    private Ammunition ammunition;
 
     public BodyPart(String name) {
         this.name = name;
@@ -117,7 +120,7 @@ class BodyPart {
         if (this == obj) {
             return true;
         }
-        if (obj == null || getClass() != obj.getClass()) {
+        if ((obj == null) || (getClass() != obj.getClass())) {
             return false;
         }
         BodyPart bodyPart = (BodyPart) obj;
