@@ -49,6 +49,7 @@ public class View {
 
     /**
      * Change output language
+     *
      * @param language now supported only ua and default
      */
     public static void changeLanguage(String language) {
