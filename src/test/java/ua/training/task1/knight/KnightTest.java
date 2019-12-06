@@ -28,6 +28,16 @@ public class KnightTest {
     }
 
     @Test
+    public void sortAmmunitionByPriceOneStringArray() {
+        ArrayList<Ammunition> expected = new ArrayList<>(input.createKnightAmmunitionMap(ONE_STRING_ARRAY).values());
+        ArrayList<Ammunition> output;
+
+        output = input.createKnight(ONE_STRING_ARRAY).sortAmmunitionByPrice();
+
+        checkOutput(expected, output);
+    }
+
+    @Test
     public void findAmmunitionInPriceRangeTestEmptyArray() {
         ArrayList<Ammunition> output;
 
