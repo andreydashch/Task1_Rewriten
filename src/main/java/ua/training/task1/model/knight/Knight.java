@@ -84,12 +84,11 @@ public class Knight {
         ArrayList<Ammunition> ammunitionList = new ArrayList<>();
         Ammunition ammunition;
 
-        // Implement later
         for(String key : body.getBodyPartsNames()) {
             ammunition = body.getAmmunitionFromBodyPart(key);
-            if (ammunition != null){
-                ammunitionList.add(ammunition);
-            }
+
+            if (ammunition == null){ continue; }
+            ammunitionList.add(ammunition);
         }
 
         return ammunitionList;
@@ -104,14 +103,13 @@ public class Knight {
 
         for(String key : body.getBodyPartsNames()) {
             Ammunition ammunition = body.getAmmunitionFromBodyPart(key);
-            if (ammunition != null){
-                if ((minBorder <= ammunition.getPrice()) &&
-                                 (ammunition.getPrice() <= maxBorder)) {
-                    ammunitionList.add(ammunition);
-                }
+
+            if (ammunition == null){ continue; }
+            if ((minBorder <= ammunition.getPrice()) &&
+                             (ammunition.getPrice() <= maxBorder)) {
+                ammunitionList.add(ammunition);
             }
         }
-
 
         return ammunitionList;
     }
