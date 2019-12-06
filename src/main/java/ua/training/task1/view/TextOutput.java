@@ -59,6 +59,7 @@ public class TextOutput {
     public static String DOUBLE_FORMAT;
     public static String DOUBLE_SIGN_FORMAT;
 
+    public static String EMPTY;
     public static String SORT_LIST_MESSAGE;
     public static String FIND_LIST_MESSAGE;
     public static String DAMAGE_PER_SECOND_MESSAGE;
@@ -85,6 +86,7 @@ public class TextOutput {
         PIERCE_DAMAGE = View.resourceBundle.getString("PIERCE") + DAMAGE;
         IMPACT_DAMAGE = View.resourceBundle.getString("IMPACT") + DAMAGE;
 
+        EMPTY = View.resourceBundle.getString("EMPTY");
         SORT_LIST_MESSAGE = View.resourceBundle.getString("SORT_LIST_MESSAGE");
         FIND_LIST_MESSAGE = View.resourceBundle.getString("FIND_LIST_MESSAGE");
         DAMAGE_PER_SECOND_MESSAGE = View.resourceBundle.getString("DAMAGE_PER_SECOND_MESSAGE");

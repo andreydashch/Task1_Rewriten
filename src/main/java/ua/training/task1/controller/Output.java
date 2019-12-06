@@ -50,7 +50,13 @@ public class Output {
         this.controller = controller;
     }
 
-    void printAmmunitionArrayList(ArrayList<Ammunition> ammunitionArray, String coverMessage) {
+    /**
+     * Show ammunitionArray to user with View
+     *
+     * @param ammunitionArray array to show
+     * @param coverMessage message upper the array
+     */
+    public void printAmmunitionArrayList(ArrayList<Ammunition> ammunitionArray, String coverMessage) {
         int arrayLength, stringLength;
         int fullTableWidth;
         StringBuilder[] lines;
@@ -72,7 +78,7 @@ public class Output {
             controller.getView().printlnMessage(line.toString());
         }
 
-        controller.getView().printlnMessage("");
+        controller.getView().printlnMessage(TextOutput.EMPTY);
     }
 
     private void formOutputLines(ArrayList<Ammunition> ammunitionArray, StringBuilder[] lines) {
@@ -115,16 +121,14 @@ public class Output {
     }
 
 
-    String getTitle(Ammunition ammunition) {
+    private String getTitle(Ammunition ammunition) {
         String[] fullClassPath = ammunition.getClass().getName().split("\\.");
 
-        return ammunition.getName() +
-                '(' +
-                TextOutput.AMMUNITION_TYPE.get(fullClassPath[fullClassPath.length - 1]) +
-                ')';
+        return ammunition.getName() + '(' +
+                TextOutput.AMMUNITION_TYPE.get(fullClassPath[fullClassPath.length - 1]) + ')';
     }
 
-    String formatTitleLine(String string, int width) {
+    private String formatTitleLine(String string, int width) {
         int startGap = 0;
         int stopGap = (width - string.length()) / 2 - 1;
         StringBuilder line = new StringBuilder(width);
@@ -141,7 +145,7 @@ public class Output {
         return line.toString();
     }
 
-    String formatLine(String string, String value) {
+    private String formatLine(String string, String value) {
         int length = TextOutput.OUTPUT_TABLE_WIDTH;
         StringBuilder line = new StringBuilder(length);
         line.append(string);
@@ -155,7 +159,7 @@ public class Output {
         return line.toString();
     }
 
-    void fillLineWithGAP(StringBuilder line, int start, int stop) {
+    private void fillLineWithGAP(StringBuilder line, int start, int stop) {
         for (int i = start; i <= stop; i++) {
             line.append(TextOutput.TABLE_GAP_FILLER);
         }
