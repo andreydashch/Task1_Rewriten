@@ -55,7 +55,7 @@ class Body {
     }
 
     /**
-     * If bodyPartName exist in body set ammunition to this part
+     * If bodyPartName exist in bodyParts set, ammunition aggregate to this part
      * and do nothing if not
      */
     public void wearAmmunitionOnExistBodyPart(String bodyPartName, Ammunition ammunition) {
