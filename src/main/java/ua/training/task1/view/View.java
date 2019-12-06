@@ -47,6 +47,10 @@ public class View {
         resourceBundle = ResourceBundle.getBundle(ViewSetUpConst.MESSAGE_BUNDLE_NAME);
     }
 
+    /**
+     * Change output language
+     * @param language now supported only ua and default
+     */
     public static void changeLanguage(String language) {
         resourceBundle = ResourceBundle.getBundle(
                 ViewSetUpConst.MESSAGE_BUNDLE_NAME, new Locale(language));
