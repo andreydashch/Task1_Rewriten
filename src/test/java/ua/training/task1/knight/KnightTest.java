@@ -4,7 +4,6 @@ import org.junit.Assert;
 import org.junit.Test;
 import ua.training.task1.controller.Input;
 import ua.training.task1.model.ammunition.Ammunition;
-import ua.training.task1.model.ammunition.AmmunitionFactory;
 import ua.training.task1.model.knight.Knight;
 
 import java.util.ArrayList;
@@ -12,7 +11,6 @@ import java.util.ArrayList;
 public class KnightTest {
     static final String[] EMPTY_ARRAY = new String[0];
     static final String[] ONE_STRING_ARRAY = {"head;armor;Helmet;4;110.20;15;7;8"};
-    static final AmmunitionFactory factory = AmmunitionFactory.getInstance();
     static Input input = new Input();
     Knight knight;
 
@@ -20,8 +18,7 @@ public class KnightTest {
     public void findAmmunitionInPriceRangeTestEmptyArray() {
         ArrayList<Ammunition> output;
 
-        knight = input.createKnight(EMPTY_ARRAY);
-        output = knight.findAmmunitionInPriceRange(20, 40);
+        output = input.createKnight(EMPTY_ARRAY).findAmmunitionInPriceRange(20, 40);
 
         Assert.assertEquals(0, output.size());
     }
@@ -31,27 +28,37 @@ public class KnightTest {
         ArrayList<Ammunition> expected = new ArrayList<>(input.createKnightAmmunitionMap(ONE_STRING_ARRAY).values());
         ArrayList<Ammunition> output;
 
-        knight = input.createKnight(ONE_STRING_ARRAY);
-        output = knight.findAmmunitionInPriceRange(0, 400);
+        output = input.createKnight(ONE_STRING_ARRAY).findAmmunitionInPriceRange(0, 400);
 
-
-        for(int i=0;i <= output.size() - 1;i ++) {
-            Assert.assertEquals(expected.get(i), output.get(i));
-        }
+        checkOutput(expected, output);
     }
 
     @Test
-    public void findAmmunitionInPriceRangeTestOneStringArrayfALSE() {
+    public void findAmmunitionInPriceRangeTestOneStringArrayIncorrectBorders() {
         ArrayList<Ammunition> expected = new ArrayList<>();
         ArrayList<Ammunition> output;
 
-        knight = input.createKnight(ONE_STRING_ARRAY);
-        output = knight.findAmmunitionInPriceRange(0, 20);
+        output = input.createKnight(ONE_STRING_ARRAY).findAmmunitionInPriceRange(400, 0);
 
+        checkOutput(expected, output);
+    }
 
-        for(int i=0;i <= output.size() - 1;i ++) {
+    @Test
+    public void findAmmunitionInPriceRangeTestOneStringArrayFalse() {
+        ArrayList<Ammunition> expected = new ArrayList<>();
+        ArrayList<Ammunition> output;
+
+        output = input.createKnight(ONE_STRING_ARRAY).findAmmunitionInPriceRange(0, 20);
+
+        checkOutput(expected, output);
+    }
+
+    private void checkOutput(ArrayList<Ammunition> expected, ArrayList<Ammunition> output) {
+        for (int i = 0; i <= output.size() - 1; i++) {
             Assert.assertEquals(expected.get(i), output.get(i));
         }
+
+        Assert.assertEquals(expected.size(), output.size());
     }
 
 }
