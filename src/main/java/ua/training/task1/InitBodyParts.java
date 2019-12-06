@@ -35,6 +35,8 @@
 package ua.training.task1;
 
 /**
+ * Initialise bodyPart fields in Knight for all program
+ *
  * @author      Dashchyk Andrey
  */
 public enum InitBodyParts {

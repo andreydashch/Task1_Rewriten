@@ -38,6 +38,8 @@ import ua.training.task1.controller.Controller;
 import ua.training.task1.view.View;
 
 /**
+ * Show all functionality of class Knight
+ *
  * @author      Dashchyk Andrey
  */
 public class App 
