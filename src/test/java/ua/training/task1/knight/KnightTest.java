@@ -1,23 +1,20 @@
 package ua.training.task1.knight;
 
 import org.junit.Assert;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import ua.training.task1.controller.Input;
 import ua.training.task1.model.ammunition.Ammunition;
+import ua.training.task1.model.ammunition.AmmunitionFactory;
 import ua.training.task1.model.knight.Knight;
 
 import java.util.ArrayList;
 
 public class KnightTest {
     static final String[] EMPTY_ARRAY = new String[0];
-    static Input input;
+    static final String[] ONE_STRING_ARRAY = {"head;armor;Helmet;4;110.20;15;7;8"};
+    static final AmmunitionFactory factory = AmmunitionFactory.getInstance();
+    static Input input = new Input();
     Knight knight;
-
-    @BeforeClass
-    public static  void initialisation() {
-        input = new Input();
-    }
 
     @Test
     public void findAmmunitionInPriceRangeTestEmptyArray() {
@@ -30,16 +27,17 @@ public class KnightTest {
     }
 
     @Test
-    public void findAmmunitionInPriceRangeTest() {
-        ArrayList<Ammunition> output = new ArrayList<>();
-        ArrayList<Ammunition> expected = new ArrayList<>();
+    public void findAmmunitionInPriceRangeTestOneStringArrayTrue() {
+        ArrayList<Ammunition> expected = new ArrayList<>(input.createKnightAmmunitionMap(ONE_STRING_ARRAY).values());
+        ArrayList<Ammunition> output;
 
-        knight = input.createKnight(EMPTY_ARRAY);
-        output = knight.findAmmunitionInPriceRange(20, 40);
+        knight = input.createKnight(ONE_STRING_ARRAY);
+        output = knight.findAmmunitionInPriceRange(0, 400);
 
-        Assert.assertTrue(output.size() == 0);
-//        for(int i=0;i <= output.size();i ++) {
-//        Assert.assertEquals(expected.get(i), output.get(i));
+
+        for(int i=0;i <= output.size() - 1;i ++) {
+            Assert.assertEquals(expected.get(i), output.get(i));
+        }
     }
 
 }

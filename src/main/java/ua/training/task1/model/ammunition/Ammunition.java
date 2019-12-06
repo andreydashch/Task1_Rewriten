@@ -34,6 +34,8 @@
 
 package ua.training.task1.model.ammunition;
 
+import java.util.Objects;
+
 /**
  * Super class with no access
  *
@@ -75,5 +77,23 @@ public class Ammunition {
 
     public double getImpactDamage() {
         return this.impactDamage;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Ammunition that = (Ammunition) obj;
+        return Double.compare(that.weight, weight) == 0 &&
+                Double.compare(that.price, price) == 0 &&
+                Double.compare(that.sliceDamage, sliceDamage) == 0 &&
+                Double.compare(that.pierceDamage, pierceDamage) == 0 &&
+                Double.compare(that.impactDamage, impactDamage) == 0 &&
+                name.equals(that.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, weight, price, sliceDamage, pierceDamage, impactDamage);
     }
 }

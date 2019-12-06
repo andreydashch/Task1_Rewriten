@@ -67,22 +67,7 @@ public class Input {
         return new Knight(knightAmmunition);
     }
 
-    private String[] getAmmunitionFromRecourseBundle(String fileName) {
-        ResourceBundle resourceBundle = ResourceBundle.getBundle(fileName);
-        HashSet<String> keySet = new HashSet<>(resourceBundle.keySet());
-        int index = 0;
-
-        String[] ammunitionArray = new String[keySet.size()];
-
-        for(String key : keySet.toArray(ammunitionArray)) {
-            ammunitionArray[index] = resourceBundle.getString(key);
-            index ++;
-        }
-
-        return ammunitionArray;
-    }
-
-    private HashMap<String, Ammunition> createKnightAmmunitionMap(String[] ammunitionArray) {
+    public HashMap<String, Ammunition> createKnightAmmunitionMap(String[] ammunitionArray) {
         double[] initialDouble;
         Ammunition ammunition;
         HashMap<String, Ammunition> knightAmmunition = new HashMap<>();
@@ -99,6 +84,21 @@ public class Input {
         }
 
         return knightAmmunition;
+    }
+
+    private String[] getAmmunitionFromRecourseBundle(String fileName) {
+        ResourceBundle resourceBundle = ResourceBundle.getBundle(fileName);
+        HashSet<String> keySet = new HashSet<>(resourceBundle.keySet());
+        int index = 0;
+
+        String[] ammunitionArray = new String[keySet.size()];
+
+        for(String key : keySet.toArray(ammunitionArray)) {
+            ammunitionArray[index] = resourceBundle.getString(key);
+            index ++;
+        }
+
+        return ammunitionArray;
     }
 
     private double[] extractDoubleArray(String[] initialString) {

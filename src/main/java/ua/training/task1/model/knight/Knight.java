@@ -102,6 +102,17 @@ public class Knight {
     public ArrayList<Ammunition> findAmmunitionInPriceRange(double minBorder, double maxBorder) {
         ArrayList<Ammunition> ammunitionList = new ArrayList<>();
 
+        for(String key : body.getBodyPartsNames()) {
+            Ammunition ammunition = body.getAmmunitionFromBodyPart(key);
+            if (ammunition != null){
+                if ((minBorder <= ammunition.getPrice()) &&
+                                 (ammunition.getPrice() <= maxBorder)) {
+                    ammunitionList.add(ammunition);
+                }
+            }
+        }
+
+
         return ammunitionList;
     }
 
