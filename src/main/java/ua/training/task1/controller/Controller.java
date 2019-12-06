@@ -67,10 +67,10 @@ public class Controller {
         output.printAmmunitionArrayList(knight.findAmmunitionInPriceRange(minBorder, maxBorder),
                 TextOutput.FIND_LIST_MESSAGE);
 
-        view.printlnMessage(TextOutput.DAMAGE_PER_SECOND_MESSAGE);
-        view.printlnMessage(Double.toString(knight.countDamagePerSecond()));
-        view.printlnMessage(TextOutput.RESIST_PER_SECOND_MESSAGE);
-        view.printlnMessage(Double.toString(knight.countResistPerSecond()));
+        view.printlnMessage(TextOutput.DAMAGE_PER_CYCLE_MESSAGE);
+        view.printlnMessage(Double.toString(knight.countDamagePerCycle()));
+        view.printlnMessage(TextOutput.RESIST_PER_CYCLE_MESSAGE);
+        view.printlnMessage(Double.toString(knight.countResistPerCycle()));
 
         view.printlnMessage(TextOutput.NEW_LINE + TextOutput.NEW_LINE);
     }

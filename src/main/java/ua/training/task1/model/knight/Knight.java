@@ -49,28 +49,23 @@ import java.util.*;
  */
 public class Knight {
     private static final EnumSet<InitBodyParts> bodyPartsNames;
-    private Body body;
+    private Body body = new Body(bodyPartsNames);
 
     static {
         bodyPartsNames = EnumSet.allOf(InitBodyParts.class);
     }
 
-    {
-        body = new Body(bodyPartsNames);
-    }
-
-    public Knight(HashMap<String, Ammunition> equipment) {
-        for(String key : equipment.keySet()) {
-            body.wearAmmunitionOnExistBodyPart(key, equipment.get(key));
+    /**
+     * @param ammunitionMap key is bodyPart to wear on and value is ammunition
+     */
+    public Knight(HashMap<String, Ammunition> ammunitionMap) {
+        for(String key : ammunitionMap.keySet()) {
+            body.wearAmmunitionOnExistBodyPart(key, ammunitionMap.get(key));
         }
     }
 
-    public static EnumSet<InitBodyParts> getBodyPartsNames() {
-        return bodyPartsNames;
-    }
-
     /**
-     * @return from min to max
+     * @return from min to max exist ammunition
      */
     public ArrayList<Ammunition> sortAmmunitionByPrice() {
         ArrayList<Ammunition> ammunitionList = new ArrayList<>();
@@ -108,6 +103,9 @@ public class Knight {
         return ammunitionList;
     }
 
+    /**
+     * Multiply sliceDamage and coefficient for all weapons
+     */
     public void sharpenAllWeapons(double coefficient) {
         Ammunition ammunition;
 
@@ -120,11 +118,25 @@ public class Knight {
         }
     }
 
-    public double countResistPerSecond() {
+    public static EnumSet<InitBodyParts> getBodyPartsNames() {
+        return bodyPartsNames;
+    }
+
+    /**
+     * Calculate sum of all three types of damage
+     * 
+     * @return sum
+     */
+    public double countResistPerCycle() {
         return countDamageAmountPerAttack(Armor.class);
     }
 
-    public double countDamagePerSecond() {
+    /**
+     * Calculate sum of all three types of resist
+     *
+     * @return sum
+     */
+    public double countDamagePerCycle() {
         return countDamageAmountPerAttack(Weapon.class);
     }
 
@@ -144,7 +156,4 @@ public class Knight {
 
         return damageAmountPerSecond;
     }
-
-
-
 }

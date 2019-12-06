@@ -34,8 +34,6 @@
 
 package ua.training.task1.view;
 
-import ua.training.task1.model.ammunition.Armor;
-
 import java.util.HashMap;
 
 /**
@@ -62,8 +60,8 @@ public class TextOutput {
     public static String EMPTY;
     public static String SORT_LIST_MESSAGE;
     public static String FIND_LIST_MESSAGE;
-    public static String DAMAGE_PER_SECOND_MESSAGE;
-    public static String RESIST_PER_SECOND_MESSAGE;
+    public static String DAMAGE_PER_CYCLE_MESSAGE;
+    public static String RESIST_PER_CYCLE_MESSAGE;
 
     static {
         update();
@@ -89,8 +87,8 @@ public class TextOutput {
         EMPTY = View.resourceBundle.getString("EMPTY");
         SORT_LIST_MESSAGE = View.resourceBundle.getString("SORT_LIST_MESSAGE");
         FIND_LIST_MESSAGE = View.resourceBundle.getString("FIND_LIST_MESSAGE");
-        DAMAGE_PER_SECOND_MESSAGE = View.resourceBundle.getString("DAMAGE_PER_SECOND_MESSAGE");
-        RESIST_PER_SECOND_MESSAGE = View.resourceBundle.getString("RESIST_PER_SECOND_MESSAGE");
+        DAMAGE_PER_CYCLE_MESSAGE = View.resourceBundle.getString("DAMAGE_PER_SECOND_MESSAGE");
+        RESIST_PER_CYCLE_MESSAGE = View.resourceBundle.getString("RESIST_PER_SECOND_MESSAGE");
 
         DOUBLE_FORMAT = View.resourceBundle.getString("DOUBLE_FORMAT");
         DOUBLE_SIGN_FORMAT = View.resourceBundle.getString("DOUBLE_SIGN_FORMAT");
