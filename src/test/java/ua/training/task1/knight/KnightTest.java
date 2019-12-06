@@ -19,6 +19,15 @@ public class KnightTest {
     static Input input = new Input();
 
     @Test
+    public void sortAmmunitionByPriceTestEmptyArray() {
+        ArrayList<Ammunition> output;
+
+        output = input.createKnight(EMPTY_ARRAY).sortAmmunitionByPrice();
+
+        Assert.assertEquals(0, output.size());
+    }
+
+    @Test
     public void findAmmunitionInPriceRangeTestEmptyArray() {
         ArrayList<Ammunition> output;
 
