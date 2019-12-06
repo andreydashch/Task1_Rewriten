@@ -34,6 +34,8 @@
 
 package ua.training.task1.model.ammunition;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Objects;
 
 /**
@@ -41,7 +43,7 @@ import java.util.Objects;
  *
  * @author      Dashchyk Andrey
  */
-public class Ammunition {
+public class Ammunition implements Comparable<Ammunition> {
     protected String name;
     protected double weight;
     protected double price;
@@ -95,5 +97,18 @@ public class Ammunition {
     @Override
     public int hashCode() {
         return Objects.hash(name, weight, price, sliceDamage, pierceDamage, impactDamage);
+    }
+
+    @Override
+    public int compareTo(Ammunition that) {
+        int compare;
+
+        if (this.price < that.price){
+            compare = -1;
+        } else {
+            compare = 0;
+        }
+
+        return compare;
     }
 }

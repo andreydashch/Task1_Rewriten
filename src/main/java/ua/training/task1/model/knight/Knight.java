@@ -38,9 +38,7 @@ import ua.training.task1.model.ammunition.Ammunition;
 import ua.training.task1.model.ammunition.Armor;
 import ua.training.task1.model.ammunition.Weapon;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
+import java.util.*;
 
 /**
  * Did not implement sort!!
@@ -90,6 +88,8 @@ public class Knight {
             if (ammunition == null){ continue; }
             ammunitionList.add(ammunition);
         }
+
+        Collections.sort(ammunitionList);
 
         return ammunitionList;
     }

@@ -8,6 +8,7 @@ import ua.training.task1.model.ammunition.Ammunition;
 import java.util.ArrayList;
 
 public class KnightTest {
+    static final Input input = new Input();
     static final String[] EMPTY_ARRAY = new String[0];
     static final String[] ONE_STRING_ARRAY = {"head;armor;Helmet;4;110.20;15;7;8"};
     static final String[] STRING_ARRAY = {
@@ -16,7 +17,6 @@ public class KnightTest {
             "leftHand;weapon;Sword;5;300;24;7;16",
             "legs;armor;Leggings;10;150;14;11;8"
     };
-    static Input input = new Input();
 
     @Test
     public void sortAmmunitionByPriceTestEmptyArray() {
@@ -28,11 +28,27 @@ public class KnightTest {
     }
 
     @Test
-    public void sortAmmunitionByPriceOneStringArray() {
+    public void sortAmmunitionByPriceTestOneStringArray() {
         ArrayList<Ammunition> expected = new ArrayList<>(input.createKnightAmmunitionMap(ONE_STRING_ARRAY).values());
         ArrayList<Ammunition> output;
 
         output = input.createKnight(ONE_STRING_ARRAY).sortAmmunitionByPrice();
+
+        checkOutput(expected, output);
+    }
+
+    @Test
+    public void sortAmmunitionByPriceTestStringArray() {
+        ArrayList<Ammunition> inputString = new ArrayList<>(input.createKnightAmmunitionMap(STRING_ARRAY).values());
+        ArrayList<Ammunition> expected = new ArrayList<>();
+        ArrayList<Ammunition> output;
+
+        expected.add(inputString.get(0));
+        expected.add(inputString.get(3));
+        expected.add(inputString.get(1));
+        expected.add(inputString.get(2));
+
+        output = input.createKnight(STRING_ARRAY).sortAmmunitionByPrice();
 
         checkOutput(expected, output);
     }
