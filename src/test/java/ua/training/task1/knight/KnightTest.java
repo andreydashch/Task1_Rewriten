@@ -40,4 +40,18 @@ public class KnightTest {
         }
     }
 
+    @Test
+    public void findAmmunitionInPriceRangeTestOneStringArrayfALSE() {
+        ArrayList<Ammunition> expected = new ArrayList<>();
+        ArrayList<Ammunition> output;
+
+        knight = input.createKnight(ONE_STRING_ARRAY);
+        output = knight.findAmmunitionInPriceRange(0, 20);
+
+
+        for(int i=0;i <= output.size() - 1;i ++) {
+            Assert.assertEquals(expected.get(i), output.get(i));
+        }
+    }
+
 }
