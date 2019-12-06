@@ -60,7 +60,7 @@ public class Output {
         stringLength = TextOutput.OUTPUT_TABLE_WIDTH;
         stringLength *= Knight.getBodyPartsNames().size();
 
-        lines = initialiseStringBuilderString(arrayLength, stringLength);
+        lines = initialiseStringBuilder(arrayLength, stringLength);
         formOutputLines(ammunitionArray, lines);
 
         for (StringBuilder line : lines) {
@@ -71,6 +71,7 @@ public class Output {
     private void formOutputLines(ArrayList<Ammunition> ammunitionArray, StringBuilder[] lines) {
         int index;
         String ammunitionString;
+
         for (Ammunition ammunition : ammunitionArray) {
             index = 0;
             ammunitionString = makeAmmunitionString(ammunition);
@@ -83,7 +84,7 @@ public class Output {
         }
     }
 
-    private StringBuilder[] initialiseStringBuilderString(int arrayLength, int stringLength) {
+    private StringBuilder[] initialiseStringBuilder(int arrayLength, int stringLength) {
         StringBuilder[] stringBuilderArray = new StringBuilder[arrayLength];
 
         for (int i=0;i <= stringBuilderArray.length - 1;i ++) {

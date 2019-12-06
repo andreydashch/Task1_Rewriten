@@ -49,10 +49,18 @@ public class Input {
     public Input() {
     }
 
-    Knight createKnight(String fileName) {
+    public Knight createKnight(String fileName) {
         HashMap<String, Ammunition> knightAmmunition;
 
         String[] ammunitionArray = getAmmunitionFromRecourseBundle(fileName);
+
+        knightAmmunition = createKnightAmmunitionMap(ammunitionArray);
+
+        return new Knight(knightAmmunition);
+    }
+
+    public Knight createKnight(String[] ammunitionArray) {
+        HashMap<String, Ammunition> knightAmmunition;
 
         knightAmmunition = createKnightAmmunitionMap(ammunitionArray);
 

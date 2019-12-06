@@ -38,6 +38,7 @@ package ua.training.task1.model.ammunition;
  */
 public class Weapon extends Ammunition{
     private boolean sharpening;
+
     protected Weapon(String name, double weight, double price,
                      double sliceDamage, double pierceDamage, double impactDamage) {
         super(name, weight, price);
