@@ -37,6 +37,8 @@ package ua.training.task1.controller;
 import ua.training.task1.model.ammunition.AmmunitionFactory;
 
 /**
+ * Controller Settings
+ *
  * @author      Dashchyk Andrey
  */
 public class Const {

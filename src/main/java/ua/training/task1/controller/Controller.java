@@ -50,6 +50,11 @@ public class Controller {
         this.view = view;
     }
 
+    /**
+     * Get input from properties file
+     * Check all functionality of Knight class
+     * Output knight data with View
+     */
     public void processUser(){
         int minBorder = 100;
         int maxBorder = 170;
@@ -73,9 +78,7 @@ public class Controller {
 
     }
 
-
-
-    public View getView() {
+    View getView() {
         return view;
     }
 }
