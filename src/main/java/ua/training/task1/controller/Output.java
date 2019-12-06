@@ -120,13 +120,13 @@ public class Output {
 
         return ammunition.getName() +
                 '(' +
-                fullClassPath[fullClassPath.length - 1] +
+                TextOutput.AMMUNITION_TYPE.get(fullClassPath[fullClassPath.length - 1]) +
                 ')';
     }
 
     String formatTitleLine(String string, int width) {
         int startGap = 0;
-        int stopGap = (width - string.length()) / 2;
+        int stopGap = (width - string.length()) / 2 - 1;
         StringBuilder line = new StringBuilder(width);
 
         fillLineWithGAP(line, startGap, stopGap);

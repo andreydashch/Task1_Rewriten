@@ -34,11 +34,16 @@
 
 package ua.training.task1.view;
 
+import ua.training.task1.model.ammunition.Armor;
+
+import java.util.HashMap;
+
 /**
  * @author      Dashchyk Andrey
  */
 public class TextOutput {
     public static int OUTPUT_TABLE_WIDTH;
+    public static HashMap<String, String> AMMUNITION_TYPE;
     public static String TABLE_GAP_FILLER;
     public static String NEW_LINE;
     public static String TABLE_SEPARATOR;
@@ -64,6 +69,10 @@ public class TextOutput {
     }
 
     static void update() {
+        AMMUNITION_TYPE = new HashMap<>();
+        AMMUNITION_TYPE.put("Armor", View.resourceBundle.getString("Armor".toUpperCase()));
+        AMMUNITION_TYPE.put("Weapon", View.resourceBundle.getString("Weapon".toUpperCase()));
+
         TABLE_GAP_FILLER = View.resourceBundle.getString("TABLE_GAP_FILLER");
         NEW_LINE = View.resourceBundle.getString("NEW_LINE");
         TABLE_SEPARATOR = View.resourceBundle.getString("TABLE_SEPARATOR");
