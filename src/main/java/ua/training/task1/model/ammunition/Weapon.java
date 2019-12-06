@@ -48,6 +48,9 @@ public class Weapon extends Ammunition{
         this.impactDamage = impactDamage;
     }
 
+    /**
+     * Multiplicand sliceDamage and coefficient (only one time)
+     */
     public void sharpen(double coefficient) {
         if (!sharpening) {
             sharpening = true;
