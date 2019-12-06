@@ -4,15 +4,19 @@ import org.junit.Assert;
 import org.junit.Test;
 import ua.training.task1.controller.Input;
 import ua.training.task1.model.ammunition.Ammunition;
-import ua.training.task1.model.knight.Knight;
 
 import java.util.ArrayList;
 
 public class KnightTest {
     static final String[] EMPTY_ARRAY = new String[0];
     static final String[] ONE_STRING_ARRAY = {"head;armor;Helmet;4;110.20;15;7;8"};
+    static final String[] STRING_ARRAY = {
+            "head;armor;Helmet;4;110.20;15;7;8",
+            "chest;armor;Cuirass;20;450;20;20;20",
+            "leftHand;weapon;Sword;5;300;24;7;16",
+            "legs;armor;Leggings;10;150;14;11;8"
+    };
     static Input input = new Input();
-    Knight knight;
 
     @Test
     public void findAmmunitionInPriceRangeTestEmptyArray() {
@@ -49,6 +53,36 @@ public class KnightTest {
         ArrayList<Ammunition> output;
 
         output = input.createKnight(ONE_STRING_ARRAY).findAmmunitionInPriceRange(0, 20);
+
+        checkOutput(expected, output);
+    }
+
+    @Test
+    public void findAmmunitionInPriceRangeTestStringArrayTrue() {
+        ArrayList<Ammunition> expected = new ArrayList<>(input.createKnightAmmunitionMap(STRING_ARRAY).values());
+        ArrayList<Ammunition> output;
+
+        output = input.createKnight(STRING_ARRAY).findAmmunitionInPriceRange(0, 1000);
+
+        checkOutput(expected, output);
+    }
+
+    @Test
+    public void findAmmunitionInPriceRangeTestStringArrayFalse() {
+        ArrayList<Ammunition> expected = new ArrayList<>();
+        ArrayList<Ammunition> output;
+
+        output = input.createKnight(STRING_ARRAY).findAmmunitionInPriceRange(1000, 1100);
+
+        checkOutput(expected, output);
+    }
+
+    @Test
+    public void findAmmunitionInPriceRangeTestStringArrayOneTrue() {
+        ArrayList<Ammunition> expected = new ArrayList<>(input.createKnightAmmunitionMap(ONE_STRING_ARRAY).values());
+        ArrayList<Ammunition> output;
+
+        output = input.createKnight(STRING_ARRAY).findAmmunitionInPriceRange(110, 115);
 
         checkOutput(expected, output);
     }
