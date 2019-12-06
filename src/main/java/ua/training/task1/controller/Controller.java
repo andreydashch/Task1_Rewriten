@@ -60,7 +60,6 @@ public class Controller {
         int maxBorder = 170;
         Knight knight;
 
-
         knight = input.createKnight(Const.CONFIG_FILE_NAME);
         knight.sharpenAllWeapons(1.2);
 
@@ -74,8 +73,6 @@ public class Controller {
         view.printlnMessage(Double.toString(knight.countResistPerSecond()));
 
         view.printlnMessage(TextOutput.NEW_LINE + TextOutput.NEW_LINE);
-
-
     }
 
     View getView() {

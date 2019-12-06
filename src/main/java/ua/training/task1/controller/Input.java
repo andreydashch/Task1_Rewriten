@@ -49,9 +49,15 @@ public class Input {
     public Input() {
     }
 
+    /**
+     * Get ammunition from file and set it
+     * to new Knight
+     *
+     * @param fileName file name of ammunition with properties suffix
+     * @return set knight instance
+     */
     public Knight createKnight(String fileName) {
         HashMap<String, Ammunition> knightAmmunition;
-
         String[] ammunitionArray = getAmmunitionFromRecourseBundle(fileName);
 
         knightAmmunition = createKnightAmmunitionMap(ammunitionArray);
@@ -59,6 +65,13 @@ public class Input {
         return new Knight(knightAmmunition);
     }
 
+    /**
+     * Get ammunition data from String and set it
+     * to new Knight
+     *
+     * @param ammunitionArray array of Strings which contain all param of AmmunitionFactory
+     * @return set knight instance
+     */
     public Knight createKnight(String[] ammunitionArray) {
         HashMap<String, Ammunition> knightAmmunition;
 
@@ -67,11 +80,16 @@ public class Input {
         return new Knight(knightAmmunition);
     }
 
+    /**
+     * Get ammunition data from String
+     *
+     * @param ammunitionArray array of Strings which contain all param of AmmunitionFactory
+     * @return map of partsOfBody and param of AmmunitionFactory
+     */
     public HashMap<String, Ammunition> createKnightAmmunitionMap(String[] ammunitionArray) {
         double[] initialDouble;
         Ammunition ammunition;
         HashMap<String, Ammunition> knightAmmunition = new HashMap<>();
-
 
         for (String ammunitionInitial : ammunitionArray) {
             String[] initialString = ammunitionInitial.split(Const.INPUT_SEPARATOR);
@@ -89,9 +107,8 @@ public class Input {
     private String[] getAmmunitionFromRecourseBundle(String fileName) {
         ResourceBundle resourceBundle = ResourceBundle.getBundle(fileName);
         HashSet<String> keySet = new HashSet<>(resourceBundle.keySet());
-        int index = 0;
-
         String[] ammunitionArray = new String[keySet.size()];
+        int index = 0;
 
         for(String key : keySet.toArray(ammunitionArray)) {
             ammunitionArray[index] = resourceBundle.getString(key);
@@ -103,6 +120,7 @@ public class Input {
 
     private double[] extractDoubleArray(String[] initialString) {
         double[] initialDouble = new double[initialString.length - Const.STRING_INPUT_PARAMETERS];
+
         for (int i = Const.STRING_INPUT_PARAMETERS; i <= initialString.length - 1; i++) {
             initialDouble[i - Const.STRING_INPUT_PARAMETERS] = Double.parseDouble(initialString[i]);
         }
