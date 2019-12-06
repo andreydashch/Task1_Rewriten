@@ -52,8 +52,9 @@ public class Output {
         this.controller = controller;
     }
 
-    void printAmmunitionArrayList(ArrayList<Ammunition> ammunitionArray) {
+    void printAmmunitionArrayList(ArrayList<Ammunition> ammunitionArray, String coverMessage) {
         int arrayLength, stringLength;
+        int fullTableWidth;
         StringBuilder[] lines;
 
         arrayLength = Ammunition.class.getDeclaredFields().length + 1;
@@ -62,6 +63,11 @@ public class Output {
 
         lines = initialiseStringBuilder(arrayLength, stringLength);
         formOutputLines(ammunitionArray, lines);
+
+        fullTableWidth =
+                (TextOutput.OUTPUT_TABLE_WIDTH + TextOutput.TABLE_SEPARATOR.length()) *
+                        ammunitionArray.size() + TextOutput.NEW_LINE.length();
+        controller.getView().printlnMessage(formatTitleLine(coverMessage, fullTableWidth));
 
         for (StringBuilder line : lines) {
             controller.getView().printlnMessage(line.toString());
@@ -95,7 +101,7 @@ public class Output {
     }
 
     private String makeAmmunitionString(Ammunition ammunition) {
-        return  formatTitleLine(getTitle(ammunition)) +
+        return  formatTitleLine(getTitle(ammunition), TextOutput.OUTPUT_TABLE_WIDTH) +
                 formatLine(TextOutput.PARAM, TextOutput.AMOUNT) +
                 formatLine(TextOutput.COINS, String.format(TextOutput.DOUBLE_FORMAT, ammunition.getPrice())) +
                 formatLine(TextOutput.KILOS, String.format(TextOutput.DOUBLE_FORMAT, ammunition.getWeight())) +
@@ -117,16 +123,16 @@ public class Output {
                 ')';
     }
 
-    String formatTitleLine(String string) {
+    String formatTitleLine(String string, int width) {
         int startGap = 0;
-        int stopGap = (TextOutput.OUTPUT_TABLE_WIDTH - string.length()) / 2;
-        StringBuilder line = new StringBuilder(TextOutput.OUTPUT_TABLE_WIDTH);
+        int stopGap = (width - string.length()) / 2;
+        StringBuilder line = new StringBuilder(width);
 
         fillLineWithGAP(line, startGap, stopGap);
         line.append(string);
 
         startGap = stopGap + string.length();
-        stopGap = TextOutput.OUTPUT_TABLE_WIDTH - TextOutput.NEW_LINE.length();
+        stopGap = width - TextOutput.NEW_LINE.length();
 
         fillLineWithGAP(line, startGap, stopGap);
         line.append(TextOutput.NEW_LINE);

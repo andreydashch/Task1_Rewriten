@@ -38,6 +38,7 @@ package ua.training.task1.view;
  * @author      Dashchyk Andrey
  */
 public class TextOutput {
+    public static int OUTPUT_TABLE_WIDTH;
     public static String TABLE_GAP_FILLER;
     public static String NEW_LINE;
     public static String TABLE_SEPARATOR;
@@ -51,7 +52,7 @@ public class TextOutput {
     public static String IMPACT_DAMAGE;
     public static String DOUBLE_FORMAT;
     public static String DOUBLE_SIGN_FORMAT;
-    public static int OUTPUT_TABLE_WIDTH;
+    public static String SORT_LIST_MESSAGE;
 
     static {
         update();
@@ -71,6 +72,8 @@ public class TextOutput {
         SLICE_DAMAGE = View.resourceBundle.getString("SLICE") + DAMAGE;
         PIERCE_DAMAGE = View.resourceBundle.getString("PIERCE") + DAMAGE;
         IMPACT_DAMAGE = View.resourceBundle.getString("IMPACT") + DAMAGE;
+        SORT_LIST_MESSAGE = View.resourceBundle.getString("SORT_LIST_MESSAGE");
         OUTPUT_TABLE_WIDTH = Integer.parseInt(View.resourceBundle.getString("OUTPUT_TABLE_WIDTH"));
+
     }                                                    
 }

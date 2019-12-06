@@ -34,8 +34,6 @@
 
 package ua.training.task1.model.ammunition;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.util.Objects;
 
 /**

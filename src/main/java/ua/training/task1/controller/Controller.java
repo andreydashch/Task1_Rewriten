@@ -35,6 +35,7 @@
 package ua.training.task1.controller;
 
 import ua.training.task1.model.knight.Knight;
+import ua.training.task1.view.TextOutput;
 import ua.training.task1.view.View;
 
 /**
@@ -54,9 +55,11 @@ public class Controller {
 
 
         knight = input.createKnight(Const.CONFIG_FILE_NAME);
+        knight.sharpenAllWeapons(1.2);
 
-        knight.sharpenAllWeapons(2);
-        output.printAmmunitionArrayList(knight.sortAmmunitionByPrice());
+        view.printlnMessage(TextOutput.NEW_LINE + TextOutput.NEW_LINE);
+        output.printAmmunitionArrayList(knight.sortAmmunitionByPrice(), TextOutput.SORT_LIST_MESSAGE);
+
 
     }
 
