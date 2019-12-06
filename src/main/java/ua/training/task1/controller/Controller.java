@@ -51,14 +51,24 @@ public class Controller {
     }
 
     public void processUser(){
+        int minBorder = 100;
+        int maxBorder = 170;
         Knight knight;
 
 
         knight = input.createKnight(Const.CONFIG_FILE_NAME);
         knight.sharpenAllWeapons(1.2);
 
-        view.printlnMessage(TextOutput.NEW_LINE + TextOutput.NEW_LINE);
         output.printAmmunitionArrayList(knight.sortAmmunitionByPrice(), TextOutput.SORT_LIST_MESSAGE);
+        output.printAmmunitionArrayList(knight.findAmmunitionInPriceRange(minBorder, maxBorder),
+                TextOutput.FIND_LIST_MESSAGE);
+
+        view.printlnMessage(TextOutput.DAMAGE_PER_SECOND_MESSAGE);
+        view.printlnMessage(Double.toString(knight.countDamagePerSecond()));
+        view.printlnMessage(TextOutput.RESIST_PER_SECOND_MESSAGE);
+        view.printlnMessage(Double.toString(knight.countResistPerSecond()));
+
+        view.printlnMessage(TextOutput.NEW_LINE + TextOutput.NEW_LINE);
 
 
     }

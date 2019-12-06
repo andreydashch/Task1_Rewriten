@@ -44,8 +44,6 @@ import java.util.ArrayList;
  * @author      Dashchyk Andrey
  */
 public class Output {
-
-
     private final Controller controller;
 
     public Output(Controller controller) {
@@ -67,11 +65,14 @@ public class Output {
         fullTableWidth =
                 (TextOutput.OUTPUT_TABLE_WIDTH + TextOutput.TABLE_SEPARATOR.length()) *
                         ammunitionArray.size() + TextOutput.NEW_LINE.length();
+
         controller.getView().printlnMessage(formatTitleLine(coverMessage, fullTableWidth));
 
         for (StringBuilder line : lines) {
             controller.getView().printlnMessage(line.toString());
         }
+
+        controller.getView().printlnMessage("");
     }
 
     private void formOutputLines(ArrayList<Ammunition> ammunitionArray, StringBuilder[] lines) {

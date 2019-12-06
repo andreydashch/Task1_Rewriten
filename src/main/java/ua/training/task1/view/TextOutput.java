@@ -50,17 +50,20 @@ public class TextOutput {
     public static String SLICE_DAMAGE;
     public static String PIERCE_DAMAGE;
     public static String IMPACT_DAMAGE;
+
     public static String DOUBLE_FORMAT;
     public static String DOUBLE_SIGN_FORMAT;
+
     public static String SORT_LIST_MESSAGE;
+    public static String FIND_LIST_MESSAGE;
+    public static String DAMAGE_PER_SECOND_MESSAGE;
+    public static String RESIST_PER_SECOND_MESSAGE;
 
     static {
         update();
     }
 
     static void update() {
-        DOUBLE_FORMAT= View.resourceBundle.getString("DOUBLE_FORMAT");
-        DOUBLE_SIGN_FORMAT = View.resourceBundle.getString("DOUBLE_SIGN_FORMAT");
         TABLE_GAP_FILLER = View.resourceBundle.getString("TABLE_GAP_FILLER");
         NEW_LINE = View.resourceBundle.getString("NEW_LINE");
         TABLE_SEPARATOR = View.resourceBundle.getString("TABLE_SEPARATOR");
@@ -72,7 +75,14 @@ public class TextOutput {
         SLICE_DAMAGE = View.resourceBundle.getString("SLICE") + DAMAGE;
         PIERCE_DAMAGE = View.resourceBundle.getString("PIERCE") + DAMAGE;
         IMPACT_DAMAGE = View.resourceBundle.getString("IMPACT") + DAMAGE;
+
         SORT_LIST_MESSAGE = View.resourceBundle.getString("SORT_LIST_MESSAGE");
+        FIND_LIST_MESSAGE = View.resourceBundle.getString("FIND_LIST_MESSAGE");
+        DAMAGE_PER_SECOND_MESSAGE = View.resourceBundle.getString("DAMAGE_PER_SECOND_MESSAGE");
+        RESIST_PER_SECOND_MESSAGE = View.resourceBundle.getString("RESIST_PER_SECOND_MESSAGE");
+
+        DOUBLE_FORMAT = View.resourceBundle.getString("DOUBLE_FORMAT");
+        DOUBLE_SIGN_FORMAT = View.resourceBundle.getString("DOUBLE_SIGN_FORMAT");
         OUTPUT_TABLE_WIDTH = Integer.parseInt(View.resourceBundle.getString("OUTPUT_TABLE_WIDTH"));
 
     }                                                    
