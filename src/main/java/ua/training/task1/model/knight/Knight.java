@@ -97,7 +97,8 @@ public class Knight {
         body.getBodyPartsNames().stream()
                 .map(key -> body.getAmmunitionFromBodyPart(key))
                 .filter(ammunition -> ammunition instanceof Sizable)
-                .forEach(ammunition -> ((Sizable) ammunition).sharpen(coefficient));
+                .map(ammunition -> (Sizable) ammunition)
+                .forEach(sizable -> sizable.sharpen(coefficient));
     }
 
     public static EnumSet<InitBodyParts> getBodyPartsNames() {
