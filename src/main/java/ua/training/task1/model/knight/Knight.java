@@ -37,6 +37,7 @@ package ua.training.task1.model.knight;
 import ua.training.task1.InitBodyParts;
 import ua.training.task1.model.ammunition.Ammunition;
 import ua.training.task1.model.ammunition.Armor;
+import ua.training.task1.model.ammunition.Sizable;
 import ua.training.task1.model.ammunition.Weapon;
 
 import java.util.*;
@@ -109,7 +110,7 @@ public class Knight {
     public void sharpenAllWeapons(double coefficient) {
         body.getBodyPartsNames().stream()
                 .map(key -> body.getAmmunitionFromBodyPart(key))
-                .filter(ammunition -> ammunition instanceof  Weapon)
+                .filter(ammunition -> ammunition instanceof Sizable)
                 .forEach(ammunition -> ((Weapon) ammunition).sharpen(coefficient));
     }
 
