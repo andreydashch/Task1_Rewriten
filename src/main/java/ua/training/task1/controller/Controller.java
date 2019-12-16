@@ -34,9 +34,12 @@
 
 package ua.training.task1.controller;
 
+import ua.training.task1.model.ammunition.Ammunition;
 import ua.training.task1.model.knight.Knight;
 import ua.training.task1.view.TextOutput;
 import ua.training.task1.view.View;
+
+import java.util.ArrayList;
 
 /**
  * @author      Dashchyk Andrey
@@ -64,7 +67,7 @@ public class Controller {
         knight.sharpenAllWeapons(1.2);
 
         output.printAmmunitionArrayList(knight.sortAmmunitionByPrice(), TextOutput.SORT_LIST_MESSAGE);
-        output.printAmmunitionArrayList(knight.findAmmunitionInPriceRange(minBorder, maxBorder),
+        output.printAmmunitionArrayList((ArrayList<Ammunition>) knight.findAmmunitionInPriceRange(minBorder, maxBorder),
                 TextOutput.FIND_LIST_MESSAGE);
 
         view.printlnMessage(TextOutput.DAMAGE_PER_CYCLE_MESSAGE);

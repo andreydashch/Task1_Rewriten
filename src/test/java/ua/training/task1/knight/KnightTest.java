@@ -57,7 +57,7 @@ public class KnightTest {
     public void findAmmunitionInPriceRangeTestEmptyArray() {
         ArrayList<Ammunition> output;
 
-        output = input.createKnight(EMPTY_ARRAY).findAmmunitionInPriceRange(20, 40);
+        output = (ArrayList<Ammunition>) input.createKnight(EMPTY_ARRAY).findAmmunitionInPriceRange(20, 40);
 
         Assert.assertEquals(0, output.size());
     }
@@ -67,7 +67,7 @@ public class KnightTest {
         ArrayList<Ammunition> expected = new ArrayList<>(input.createKnightAmmunitionMap(ONE_STRING_ARRAY).values());
         ArrayList<Ammunition> output;
 
-        output = input.createKnight(ONE_STRING_ARRAY).findAmmunitionInPriceRange(0, 400);
+        output = (ArrayList<Ammunition>) input.createKnight(ONE_STRING_ARRAY).findAmmunitionInPriceRange(0, 400);
 
         checkOutput(expected, output);
     }
@@ -77,7 +77,7 @@ public class KnightTest {
         ArrayList<Ammunition> expected = new ArrayList<>();
         ArrayList<Ammunition> output;
 
-        output = input.createKnight(ONE_STRING_ARRAY).findAmmunitionInPriceRange(400, 0);
+        output = (ArrayList<Ammunition>) input.createKnight(ONE_STRING_ARRAY).findAmmunitionInPriceRange(400, 0);
 
         checkOutput(expected, output);
     }
@@ -87,7 +87,7 @@ public class KnightTest {
         ArrayList<Ammunition> expected = new ArrayList<>();
         ArrayList<Ammunition> output;
 
-        output = input.createKnight(ONE_STRING_ARRAY).findAmmunitionInPriceRange(0, 20);
+        output = (ArrayList<Ammunition>) input.createKnight(ONE_STRING_ARRAY).findAmmunitionInPriceRange(0, 20);
 
         checkOutput(expected, output);
     }
@@ -97,7 +97,7 @@ public class KnightTest {
         ArrayList<Ammunition> expected = new ArrayList<>(input.createKnightAmmunitionMap(STRING_ARRAY).values());
         ArrayList<Ammunition> output;
 
-        output = input.createKnight(STRING_ARRAY).findAmmunitionInPriceRange(0, 1000);
+        output = (ArrayList<Ammunition>) input.createKnight(STRING_ARRAY).findAmmunitionInPriceRange(0, 1000);
 
         checkOutput(expected, output);
     }
@@ -107,7 +107,7 @@ public class KnightTest {
         ArrayList<Ammunition> expected = new ArrayList<>();
         ArrayList<Ammunition> output;
 
-        output = input.createKnight(STRING_ARRAY).findAmmunitionInPriceRange(1000, 1100);
+        output = (ArrayList<Ammunition>) input.createKnight(STRING_ARRAY).findAmmunitionInPriceRange(1000, 1100);
 
         checkOutput(expected, output);
     }
@@ -117,7 +117,7 @@ public class KnightTest {
         ArrayList<Ammunition> expected = new ArrayList<>(input.createKnightAmmunitionMap(ONE_STRING_ARRAY).values());
         ArrayList<Ammunition> output;
 
-        output = input.createKnight(STRING_ARRAY).findAmmunitionInPriceRange(110, 115);
+        output = (ArrayList<Ammunition>) input.createKnight(STRING_ARRAY).findAmmunitionInPriceRange(110, 115);
 
         checkOutput(expected, output);
     }

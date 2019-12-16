@@ -41,6 +41,7 @@ import ua.training.task1.model.ammunition.Sizable;
 import ua.training.task1.model.ammunition.Weapon;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * Did not implement sort!!
@@ -88,20 +89,13 @@ public class Knight {
      * @param minBorder such as >= minBorder
      * @param maxBorder such as <= minBorder
      */
-    public ArrayList<Ammunition> findAmmunitionInPriceRange(double minBorder, double maxBorder) {
-        ArrayList<Ammunition> ammunitionList = new ArrayList<>();
-
-        for(String key : body.getBodyPartsNames()) {
-            Ammunition ammunition = body.getAmmunitionFromBodyPart(key);
-
-            if (ammunition == null){ continue; }
-            if ((minBorder <= ammunition.getPrice()) &&
-                             (ammunition.getPrice() <= maxBorder)) {
-                ammunitionList.add(ammunition);
-            }
-        }
-
-        return ammunitionList;
+    public List<Ammunition> findAmmunitionInPriceRange(double minBorder, double maxBorder) {
+        return body.getBodyPartsNames().stream()
+                .map(key -> body.getAmmunitionFromBodyPart(key))
+                .filter(Objects::nonNull)
+                .filter(ammunition -> minBorder <= ammunition.getPrice())
+                .filter(ammunition -> ammunition.getPrice() <= maxBorder)
+                .collect(Collectors.toList());
     }
 
     /**
@@ -111,7 +105,7 @@ public class Knight {
         body.getBodyPartsNames().stream()
                 .map(key -> body.getAmmunitionFromBodyPart(key))
                 .filter(ammunition -> ammunition instanceof Sizable)
-                .forEach(ammunition -> ((Weapon) ammunition).sharpen(coefficient));
+                .forEach(ammunition -> ((Sizable) ammunition).sharpen(coefficient));
     }
 
     public static EnumSet<InitBodyParts> getBodyPartsNames() {
