@@ -107,15 +107,10 @@ public class Knight {
      * Multiply sliceDamage and coefficient for all weapons
      */
     public void sharpenAllWeapons(double coefficient) {
-        Ammunition ammunition;
-
-        for(String key : body.getBodyPartsNames()) {
-            ammunition = body.getAmmunitionFromBodyPart(key);
-
-            if (ammunition instanceof Weapon) {
-                ((Weapon) ammunition).sharpen(coefficient);
-            }
-        }
+        body.getBodyPartsNames().stream()
+                .map(key -> body.getAmmunitionFromBodyPart(key))
+                .filter(ammunition -> ammunition instanceof  Weapon)
+                .forEach(ammunition -> ((Weapon) ammunition).sharpen(coefficient));
     }
 
     public static EnumSet<InitBodyParts> getBodyPartsNames() {
