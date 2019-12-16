@@ -36,7 +36,7 @@ package ua.training.task1.model.ammunition;
 /**
  * @author      Dashchyk Andrey
  */
-public class Weapon extends Ammunition{
+public class Weapon extends Ammunition implements Sizable{
     private boolean sharpening;
 
     protected Weapon(String name, double weight, double price,
@@ -51,6 +51,7 @@ public class Weapon extends Ammunition{
     /**
      * Multiplicand sliceDamage and coefficient (only one time)
      */
+    @Override
     public void sharpen(double coefficient) {
         if (!sharpening) {
             sharpening = true;
