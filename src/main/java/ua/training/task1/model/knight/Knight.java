@@ -43,6 +43,8 @@ import ua.training.task1.model.ammunition.Weapon;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import static java.util.Arrays.setAll;
+
 /**
  * Did not implement sort!!
  * Did not implement choose!!
@@ -123,19 +125,14 @@ public class Knight {
     }
 
     private double countDamageAmountPerAttack(Class<?> subClass) {
-        double damageAmountPerSecond = 0;
-        Ammunition ammunition;
-
-        for(String key : body.getBodyPartsNames()) {
-            ammunition = body.getAmmunitionFromBodyPart(key);
-
-            if (subClass.isInstance(ammunition)) {
-                damageAmountPerSecond += ammunition.getImpactDamage();
-                damageAmountPerSecond += ammunition.getSliceDamage();
-                damageAmountPerSecond += ammunition.getPierceDamage();
-            }
-        }
-
-        return damageAmountPerSecond;
+        return body.getBodyPartsNames().stream()
+                .map(key -> body.getAmmunitionFromBodyPart(key))
+                .filter(Objects::nonNull)
+                .filter(subClass::isInstance)
+                .map(ammunition ->
+                        ammunition.getImpactDamage() +
+                        ammunition.getSliceDamage() +
+                        ammunition.getPierceDamage())
+                .reduce(0.0, Double::sum);
     }
 }
