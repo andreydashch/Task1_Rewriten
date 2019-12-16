@@ -69,20 +69,12 @@ public class Knight {
     /**
      * @return from min to max exist ammunition
      */
-    public ArrayList<Ammunition> sortAmmunitionByPrice() {
-        ArrayList<Ammunition> ammunitionList = new ArrayList<>();
-        Ammunition ammunition;
-
-        for(String key : body.getBodyPartsNames()) {
-            ammunition = body.getAmmunitionFromBodyPart(key);
-
-            if (ammunition == null){ continue; }
-            ammunitionList.add(ammunition);
-        }
-
-        Collections.sort(ammunitionList);
-
-        return ammunitionList;
+    public List<Ammunition> sortAmmunitionByPrice() {
+        return  body.getBodyPartsNames().stream()
+                .map(key -> body.getAmmunitionFromBodyPart(key))
+                .filter(Objects::nonNull)
+                .sorted()
+                .collect(Collectors.toList());
     }
 
     /**

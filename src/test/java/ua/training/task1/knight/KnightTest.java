@@ -22,7 +22,7 @@ public class KnightTest {
     public void sortAmmunitionByPriceTestEmptyArray() {
         ArrayList<Ammunition> output;
 
-        output = input.createKnight(EMPTY_ARRAY).sortAmmunitionByPrice();
+        output = (ArrayList<Ammunition>) input.createKnight(EMPTY_ARRAY).sortAmmunitionByPrice();
 
         Assert.assertEquals(0, output.size());
     }
@@ -32,7 +32,7 @@ public class KnightTest {
         ArrayList<Ammunition> expected = new ArrayList<>(input.createKnightAmmunitionMap(ONE_STRING_ARRAY).values());
         ArrayList<Ammunition> output;
 
-        output = input.createKnight(ONE_STRING_ARRAY).sortAmmunitionByPrice();
+        output = (ArrayList<Ammunition>) input.createKnight(ONE_STRING_ARRAY).sortAmmunitionByPrice();
 
         checkOutput(expected, output);
     }
@@ -48,7 +48,7 @@ public class KnightTest {
         expected.add(inputString.get(1));
         expected.add(inputString.get(2));
 
-        output = input.createKnight(STRING_ARRAY).sortAmmunitionByPrice();
+        output = (ArrayList<Ammunition>) input.createKnight(STRING_ARRAY).sortAmmunitionByPrice();
 
         checkOutput(expected, output);
     }

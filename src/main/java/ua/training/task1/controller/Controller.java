@@ -66,7 +66,7 @@ public class Controller {
         knight = input.createKnight(Const.CONFIG_FILE_NAME);
         knight.sharpenAllWeapons(1.2);
 
-        output.printAmmunitionArrayList(knight.sortAmmunitionByPrice(), TextOutput.SORT_LIST_MESSAGE);
+        output.printAmmunitionArrayList((ArrayList<Ammunition>) knight.sortAmmunitionByPrice(), TextOutput.SORT_LIST_MESSAGE);
         output.printAmmunitionArrayList((ArrayList<Ammunition>) knight.findAmmunitionInPriceRange(minBorder, maxBorder),
                 TextOutput.FIND_LIST_MESSAGE);
 
