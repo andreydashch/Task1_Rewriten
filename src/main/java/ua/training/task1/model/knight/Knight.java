@@ -43,8 +43,6 @@ import ua.training.task1.model.ammunition.Weapon;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import static java.util.Arrays.setAll;
-
 /**
  * Did not implement sort!!
  * Did not implement choose!!
