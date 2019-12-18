@@ -41,7 +41,7 @@ import java.util.Objects;
  *
  * @author      Dashchyk Andrey
  */
-public class Ammunition implements Comparable<Ammunition> {
+public class Ammunition implements WarObject, Comparable<Ammunition> {
     protected String name;
     protected double weight;
     protected double price;
@@ -55,27 +55,33 @@ public class Ammunition implements Comparable<Ammunition> {
         this.price = price;
     }
 
-    public String getName() {
+    @Override
+    public String name() {
         return this.name;
     }
 
-    public double getWeight() {
+    @Override
+    public double weight() {
         return this.weight;
     }
 
-    public double getPrice() {
+    @Override
+    public double price() {
         return this.price;
     }
 
-    public double getSliceDamage() {
+    @Override
+    public double sliceDamage() {
         return this.sliceDamage;
     }
 
-    public double getPierceDamage() {
+    @Override
+    public double pierceDamage() {
         return this.pierceDamage;
     }
 
-    public double getImpactDamage() {
+    @Override
+    public double impactDamage() {
         return this.impactDamage;
     }
 

@@ -35,6 +35,7 @@
 package ua.training.task1.controller;
 
 import ua.training.task1.model.ammunition.Ammunition;
+import ua.training.task1.model.ammunition.WarObject;
 import ua.training.task1.model.knight.Knight;
 import ua.training.task1.view.TextOutput;
 
@@ -56,7 +57,7 @@ public class Output {
      * @param ammunitionArray array to show
      * @param coverMessage message upper the array
      */
-    public void printAmmunitionArrayList(ArrayList<Ammunition> ammunitionArray, String coverMessage) {
+    public void printAmmunitionArrayList(ArrayList<WarObject> ammunitionArray, String coverMessage) {
         int arrayLength, stringLength;
         int fullTableWidth;
         StringBuilder[] lines;
@@ -81,13 +82,13 @@ public class Output {
         controller.getView().printlnMessage(TextOutput.EMPTY);
     }
 
-    private void formOutputLines(ArrayList<Ammunition> ammunitionArray, StringBuilder[] lines) {
+    private void formOutputLines(ArrayList<WarObject> ammunitionArray, StringBuilder[] lines) {
         int index;
         String ammunitionString;
 
-        for (Ammunition ammunition : ammunitionArray) {
+        for (WarObject warObject : ammunitionArray) {
             index = 0;
-            ammunitionString = makeAmmunitionString(ammunition);
+            ammunitionString = makeAmmunitionString(warObject);
 
             for (String linePart : ammunitionString.split(TextOutput.NEW_LINE)) {
                 lines[index].append(linePart);
@@ -107,24 +108,24 @@ public class Output {
         return stringBuilderArray;
     }
 
-    private String makeAmmunitionString(Ammunition ammunition) {
-        return  formatTitleLine(getTitle(ammunition), TextOutput.OUTPUT_TABLE_WIDTH) +
+    private String makeAmmunitionString(WarObject warObject) {
+        return  formatTitleLine(getTitle(warObject), TextOutput.OUTPUT_TABLE_WIDTH) +
                 formatLine(TextOutput.PARAM, TextOutput.AMOUNT) +
-                formatLine(TextOutput.COINS, String.format(TextOutput.DOUBLE_FORMAT, ammunition.getPrice())) +
-                formatLine(TextOutput.KILOS, String.format(TextOutput.DOUBLE_FORMAT, ammunition.getWeight())) +
+                formatLine(TextOutput.COINS, String.format(TextOutput.DOUBLE_FORMAT, warObject.price())) +
+                formatLine(TextOutput.KILOS, String.format(TextOutput.DOUBLE_FORMAT, warObject.weight())) +
                 formatLine(TextOutput.SLICE_DAMAGE,
-                        String.format(TextOutput.DOUBLE_SIGN_FORMAT, ammunition.getSliceDamage())) +
+                        String.format(TextOutput.DOUBLE_SIGN_FORMAT, warObject.sliceDamage())) +
                 formatLine(TextOutput.PIERCE_DAMAGE,
-                        String.format(TextOutput.DOUBLE_SIGN_FORMAT, ammunition.getPierceDamage())) +
+                        String.format(TextOutput.DOUBLE_SIGN_FORMAT, warObject.pierceDamage())) +
                 formatLine(TextOutput.IMPACT_DAMAGE,
-                        String.format(TextOutput.DOUBLE_SIGN_FORMAT, ammunition.getImpactDamage()));
+                        String.format(TextOutput.DOUBLE_SIGN_FORMAT, warObject.impactDamage()));
     }
 
 
-    private String getTitle(Ammunition ammunition) {
-        String[] fullClassPath = ammunition.getClass().getName().split("\\.");
+    private String getTitle(WarObject warObject) {
+        String[] fullClassPath = warObject.getClass().getName().split("\\.");
 
-        return ammunition.getName() + '(' +
+        return warObject.name() + '(' +
                 TextOutput.AMMUNITION_TYPE.get(fullClassPath[fullClassPath.length - 1]) + ')';
     }
 

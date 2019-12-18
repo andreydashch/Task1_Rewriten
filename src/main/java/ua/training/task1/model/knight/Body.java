@@ -36,6 +36,7 @@ package ua.training.task1.model.knight;
 
 import ua.training.task1.InitBodyParts;
 import ua.training.task1.model.ammunition.Ammunition;
+import ua.training.task1.model.ammunition.WarObject;
 
 import java.util.EnumSet;
 import java.util.HashSet;
@@ -55,14 +56,14 @@ class Body {
     }
 
     /**
-     * If bodyPartName exist in bodyParts set, ammunition aggregate to this part
+     * If bodyPartName exist in bodyParts set, warObject aggregate to this part
      * and do nothing if not
      */
-    public void wearAmmunitionOnExistBodyPart(String bodyPartName, Ammunition ammunition) {
+    public void wearAmmunitionOnExistBodyPart(String bodyPartName, WarObject warObject) {
         BodyPart bodyPart = findBodyPart(bodyPartName);
 
         if (bodyPart != null) {
-            bodyPart.setAmmunition(ammunition);
+            bodyPart.setWarObject(warObject);
         }
     }
 
@@ -76,8 +77,8 @@ class Body {
         return names;
     }
 
-    public Ammunition getAmmunitionFromBodyPart(String bodyPartName) {
-        return findBodyPart(bodyPartName).getAmmunition();
+    public WarObject getWarObjectFromBodyPart(String bodyPartName) {
+        return findBodyPart(bodyPartName).getWarObject();
     }
 
     private BodyPart findBodyPart(String bodyPartName) {
@@ -97,18 +98,18 @@ class Body {
 
 class BodyPart {
     private String name;
-    private Ammunition ammunition;
+    private WarObject warObject;
 
     public BodyPart(String name) {
         this.name = name;
     }
 
-    public void setAmmunition(Ammunition ammunition) {
-        this.ammunition = ammunition;
+    public void setWarObject(WarObject warObject) {
+        this.warObject = warObject;
     }
 
-    public Ammunition getAmmunition() {
-        return ammunition;
+    public WarObject getWarObject() {
+        return warObject;
     }
 
     public String getName() {

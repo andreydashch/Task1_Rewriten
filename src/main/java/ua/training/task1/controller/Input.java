@@ -34,7 +34,7 @@
 
 package ua.training.task1.controller;
 
-import ua.training.task1.model.ammunition.Ammunition;
+import ua.training.task1.model.ammunition.WarObject;
 import ua.training.task1.model.knight.Knight;
 
 import java.util.HashMap;
@@ -57,7 +57,7 @@ public class Input {
      * @return set knight instance
      */
     public Knight createKnight(String fileName) {
-        HashMap<String, Ammunition> knightAmmunition;
+        HashMap<String, WarObject> knightAmmunition;
         String[] ammunitionArray = getAmmunitionFromRecourseBundle(fileName);
 
         knightAmmunition = createKnightAmmunitionMap(ammunitionArray);
@@ -73,7 +73,7 @@ public class Input {
      * @return set knight instance
      */
     public Knight createKnight(String[] ammunitionArray) {
-        HashMap<String, Ammunition> knightAmmunition;
+        HashMap<String, WarObject> knightAmmunition;
 
         knightAmmunition = createKnightAmmunitionMap(ammunitionArray);
 
@@ -86,19 +86,19 @@ public class Input {
      * @param ammunitionArray array of Strings which contain all param of AmmunitionFactory
      * @return map of partsOfBody and param of AmmunitionFactory
      */
-    public HashMap<String, Ammunition> createKnightAmmunitionMap(String[] ammunitionArray) {
+    public HashMap<String, WarObject> createKnightAmmunitionMap(String[] ammunitionArray) {
         double[] initialDouble;
-        Ammunition ammunition;
-        HashMap<String, Ammunition> knightAmmunition = new HashMap<>();
+        WarObject warObject;
+        HashMap<String, WarObject> knightAmmunition = new HashMap<>();
 
         for (String ammunitionInitial : ammunitionArray) {
             String[] initialString = ammunitionInitial.split(Const.INPUT_SEPARATOR);
             initialDouble = extractDoubleArray(initialString);
 
-            ammunition = Const.ammunitionFactory.produce(initialString[1], initialString[2], initialDouble[0],
+            warObject = Const.ammunitionFactory.produce(initialString[1], initialString[2], initialDouble[0],
                     initialDouble[1], initialDouble[2], initialDouble[3], initialDouble[4]);
 
-            knightAmmunition.put(initialString[0], ammunition);
+            knightAmmunition.put(initialString[0], warObject);
         }
 
         return knightAmmunition;

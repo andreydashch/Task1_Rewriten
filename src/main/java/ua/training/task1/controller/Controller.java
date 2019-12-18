@@ -35,6 +35,7 @@
 package ua.training.task1.controller;
 
 import ua.training.task1.model.ammunition.Ammunition;
+import ua.training.task1.model.ammunition.WarObject;
 import ua.training.task1.model.knight.Knight;
 import ua.training.task1.view.TextOutput;
 import ua.training.task1.view.View;
@@ -66,8 +67,8 @@ public class Controller {
         knight = input.createKnight(Const.CONFIG_FILE_NAME);
         knight.sharpenAllWeapons(1.2);
 
-        output.printAmmunitionArrayList((ArrayList<Ammunition>) knight.sortAmmunitionByPrice(), TextOutput.SORT_LIST_MESSAGE);
-        output.printAmmunitionArrayList((ArrayList<Ammunition>) knight.findAmmunitionInPriceRange(minBorder, maxBorder),
+        output.printAmmunitionArrayList( (ArrayList<WarObject>) knight.sortAmmunitionByPrice(), TextOutput.SORT_LIST_MESSAGE);
+        output.printAmmunitionArrayList( (ArrayList<WarObject>) knight.findAmmunitionInPriceRange(minBorder, maxBorder),
                 TextOutput.FIND_LIST_MESSAGE);
 
         view.printlnMessage(TextOutput.DAMAGE_PER_CYCLE_MESSAGE);

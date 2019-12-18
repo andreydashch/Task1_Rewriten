@@ -35,10 +35,7 @@
 package ua.training.task1.model.knight;
 
 import ua.training.task1.InitBodyParts;
-import ua.training.task1.model.ammunition.Ammunition;
-import ua.training.task1.model.ammunition.Armor;
-import ua.training.task1.model.ammunition.Sizable;
-import ua.training.task1.model.ammunition.Weapon;
+import ua.training.task1.model.ammunition.*;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -60,7 +57,7 @@ public class Knight {
     /**
      * @param ammunitionMap key is bodyPart to wear on and value is ammunition
      */
-    public Knight(HashMap<String, Ammunition> ammunitionMap) {
+    public Knight(HashMap<String, WarObject> ammunitionMap) {
         for(String key : ammunitionMap.keySet()) {
             body.wearAmmunitionOnExistBodyPart(key, ammunitionMap.get(key));
         }
@@ -69,9 +66,9 @@ public class Knight {
     /**
      * @return from min to max exist ammunition
      */
-    public List<Ammunition> sortAmmunitionByPrice() {
+    public List<WarObject> sortAmmunitionByPrice() {
         return  body.getBodyPartsNames().stream()
-                .map(key -> body.getAmmunitionFromBodyPart(key))
+                .map(key -> body.getWarObjectFromBodyPart(key))
                 .filter(Objects::nonNull)
                 .sorted()
                 .collect(Collectors.toList());
@@ -80,13 +77,14 @@ public class Knight {
     /**
      * @param minBorder such as >= minBorder
      * @param maxBorder such as <= minBorder
+     * @return
      */
-    public List<Ammunition> findAmmunitionInPriceRange(double minBorder, double maxBorder) {
+    public List<WarObject> findAmmunitionInPriceRange(double minBorder, double maxBorder) {
         return body.getBodyPartsNames().stream()
-                .map(key -> body.getAmmunitionFromBodyPart(key))
+                .map(key -> body.getWarObjectFromBodyPart(key))
                 .filter(Objects::nonNull)
-                .filter(ammunition -> minBorder <= ammunition.getPrice())
-                .filter(ammunition -> ammunition.getPrice() <= maxBorder)
+                .filter(warObject -> minBorder <= warObject.price())
+                .filter(warObject -> warObject.price() <= maxBorder)
                 .collect(Collectors.toList());
     }
 
@@ -95,9 +93,9 @@ public class Knight {
      */
     public void sharpenAllWeapons(double coefficient) {
         body.getBodyPartsNames().stream()
-                .map(key -> body.getAmmunitionFromBodyPart(key))
-                .filter(ammunition -> ammunition instanceof Sizable)
-                .map(ammunition -> (Sizable) ammunition)
+                .map(key -> body.getWarObjectFromBodyPart(key))
+                .filter(warObject -> warObject instanceof Sizable)
+                .map(warObject -> (Sizable) warObject)
                 .forEach(sizable -> sizable.sharpen(coefficient));
     }
 
@@ -125,13 +123,13 @@ public class Knight {
 
     private double countDamageAmountPerAttack(Class<?> subClass) {
         return body.getBodyPartsNames().stream()
-                .map(key -> body.getAmmunitionFromBodyPart(key))
+                .map(key -> body.getWarObjectFromBodyPart(key))
                 .filter(Objects::nonNull)
                 .filter(subClass::isInstance)
-                .map(ammunition ->
-                        ammunition.getImpactDamage() +
-                        ammunition.getSliceDamage() +
-                        ammunition.getPierceDamage())
+                .map(warObject ->
+                        warObject.impactDamage() +
+                        warObject.sliceDamage() +
+                        warObject.pierceDamage())
                 .reduce(0.0, Double::sum);
     }
 }
