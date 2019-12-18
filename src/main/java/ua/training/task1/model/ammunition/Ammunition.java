@@ -41,7 +41,7 @@ import java.util.Objects;
  *
  * @author      Dashchyk Andrey
  */
-public abstract class Ammunition implements WarObject, Comparable<Ammunition> {
+public abstract class Ammunition implements WarObject {
     protected String name;
     protected double weight;
     protected double price;

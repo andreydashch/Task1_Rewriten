@@ -3,132 +3,117 @@ package ua.training.task1.knight;
 import org.junit.Assert;
 import org.junit.Test;
 import ua.training.task1.controller.Input;
-import ua.training.task1.model.ammunition.Ammunition;
 import ua.training.task1.model.ammunition.WarObject;
+import ua.training.task1.model.knight.Knight;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class KnightTest {
     static final Input input = new Input();
     static final String[] EMPTY_ARRAY = new String[0];
-    static final String[] ONE_STRING_ARRAY = {"head;armor;Helmet;4;110.20;15;7;8"};
+    static final String[] ONE_STRING_ARRAY = {"HEAD;armor;Helmet;4;110.20;15;7;8"};
     static final String[] STRING_ARRAY = {
-            "head;armor;Helmet;4;110.20;15;7;8",
-            "chest;armor;Cuirass;20;450;20;20;20",
-            "leftHand;weapon;Sword;5;300;24;7;16",
-            "legs;armor;Leggings;10;150;14;11;8"
+            "HEAD;armor;Helmet;4;110.20;15;7;8",
+            "CHEST;armor;Cuirass;20;450;20;20;20",
+            "LEFT_HAND;weapon;Sword;5;300;24;7;16",
+            "LEGS;armor;Leggings;10;150;14;11;8"
     };
 
     @Test
     public void sortAmmunitionByPriceTestEmptyArray() {
-        ArrayList<WarObject> output;
+        List<WarObject> output;
 
-        output = (ArrayList<WarObject>) input.createKnight(EMPTY_ARRAY).sortAmmunitionByPrice();
+        output =  input.createKnight(EMPTY_ARRAY).sortAmmunitionByPrice();
 
         Assert.assertEquals(0, output.size());
     }
 
     @Test
     public void sortAmmunitionByPriceTestOneStringArray() {
-        ArrayList<WarObject> expected = new ArrayList<>(input.createKnightAmmunitionMap(ONE_STRING_ARRAY).values());
-        ArrayList<WarObject> output;
+        List<WarObject> expected = new ArrayList<>(input.createKnightAmmunitionMap(ONE_STRING_ARRAY).values());
+        List<WarObject> output;
 
-        output = (ArrayList<WarObject>) input.createKnight(ONE_STRING_ARRAY).sortAmmunitionByPrice();
-
-        checkOutput(expected, output);
-    }
-
-    @Test
-    public void sortAmmunitionByPriceTestStringArray() {
-        ArrayList<WarObject> inputString = new ArrayList<>(input.createKnightAmmunitionMap(STRING_ARRAY).values());
-        ArrayList<WarObject> expected = new ArrayList<>();
-        ArrayList<WarObject> output;
-
-        expected.add(inputString.get(0));
-        expected.add(inputString.get(3));
-        expected.add(inputString.get(1));
-        expected.add(inputString.get(2));
-
-        output = (ArrayList<WarObject>) input.createKnight(STRING_ARRAY).sortAmmunitionByPrice();
+        Knight knight =  input.createKnight(ONE_STRING_ARRAY);
+        output = knight.sortAmmunitionByPrice();
 
         checkOutput(expected, output);
     }
 
     @Test
     public void findAmmunitionInPriceRangeTestEmptyArray() {
-        ArrayList<WarObject> output;
+        List<WarObject> output;
 
-        output = (ArrayList<WarObject>) input.createKnight(EMPTY_ARRAY).findAmmunitionInPriceRange(20, 40);
-
+        output =  input.createKnight(EMPTY_ARRAY).findAmmunitionInPriceRange(20, 40);
         Assert.assertEquals(0, output.size());
     }
 
     @Test
     public void findAmmunitionInPriceRangeTestOneStringArrayTrue() {
-        ArrayList<WarObject> expected = new ArrayList<>(input.createKnightAmmunitionMap(ONE_STRING_ARRAY).values());
-        ArrayList<WarObject> output;
+        List<WarObject> expected = new ArrayList<>(input.createKnightAmmunitionMap(ONE_STRING_ARRAY).values());
+        List<WarObject> output;
 
-        output = (ArrayList<WarObject>) input.createKnight(ONE_STRING_ARRAY).findAmmunitionInPriceRange(0, 400);
+        output =  input.createKnight(ONE_STRING_ARRAY).findAmmunitionInPriceRange(0, 400);
 
         checkOutput(expected, output);
     }
 
     @Test
     public void findAmmunitionInPriceRangeTestOneStringArrayIncorrectBorders() {
-        ArrayList<WarObject> expected = new ArrayList<>();
-        ArrayList<WarObject> output;
+        List<WarObject> expected = new ArrayList<>();
+        List<WarObject> output;
 
-        output = (ArrayList<WarObject>) input.createKnight(ONE_STRING_ARRAY).findAmmunitionInPriceRange(400, 0);
+        output =  input.createKnight(ONE_STRING_ARRAY).findAmmunitionInPriceRange(400, 0);
 
         checkOutput(expected, output);
     }
 
     @Test
     public void findAmmunitionInPriceRangeTestOneStringArrayFalse() {
-        ArrayList<WarObject> expected = new ArrayList<>();
-        ArrayList<WarObject> output;
+        List<WarObject> expected = new ArrayList<>();
+        List<WarObject> output;
 
-        output = (ArrayList<WarObject>) input.createKnight(ONE_STRING_ARRAY).findAmmunitionInPriceRange(0, 20);
+        output =  input.createKnight(ONE_STRING_ARRAY).findAmmunitionInPriceRange(0, 20);
 
         checkOutput(expected, output);
     }
 
     @Test
     public void findAmmunitionInPriceRangeTestStringArrayTrue() {
-        ArrayList<WarObject> expected = new ArrayList<>(input.createKnightAmmunitionMap(STRING_ARRAY).values());
-        ArrayList<WarObject> output;
+        List<WarObject> expected = new ArrayList<>(input.createKnightAmmunitionMap(STRING_ARRAY).values());
+        List<WarObject> output;
 
-        output = (ArrayList<WarObject>) input.createKnight(STRING_ARRAY).findAmmunitionInPriceRange(0, 1000);
+        output =  input.createKnight(STRING_ARRAY).findAmmunitionInPriceRange(0, 1000);
 
         checkOutput(expected, output);
     }
 
     @Test
     public void findAmmunitionInPriceRangeTestStringArrayFalse() {
-        ArrayList<WarObject> expected = new ArrayList<>();
-        ArrayList<WarObject> output;
+        List<WarObject> expected = new ArrayList<>();
+        List<WarObject> output;
 
-        output = (ArrayList<WarObject>) input.createKnight(STRING_ARRAY).findAmmunitionInPriceRange(1000, 1100);
+        output =  input.createKnight(STRING_ARRAY).findAmmunitionInPriceRange(1000, 1100);
 
         checkOutput(expected, output);
     }
 
     @Test
     public void findAmmunitionInPriceRangeTestStringArrayOneTrue() {
-        ArrayList<WarObject> expected = new ArrayList<>(input.createKnightAmmunitionMap(ONE_STRING_ARRAY).values());
-        ArrayList<WarObject> output;
+        List<WarObject> expected = new ArrayList<>(input.createKnightAmmunitionMap(ONE_STRING_ARRAY).values());
+        List<WarObject> output;
 
-        output = (ArrayList<WarObject>) input.createKnight(STRING_ARRAY).findAmmunitionInPriceRange(110, 115);
+        output =  input.createKnight(STRING_ARRAY).findAmmunitionInPriceRange(110, 115);
 
         checkOutput(expected, output);
     }
 
-    private void checkOutput(ArrayList<WarObject> expected, ArrayList<WarObject> output) {
+    private void checkOutput(List<WarObject> expected, List<WarObject> output) {
         for (int i = 0; i <= output.size() - 1; i++) {
             Assert.assertEquals(expected.get(i), output.get(i));
         }
 
-        Assert.assertEquals(expected.size(), output.size());
+       Assert.assertEquals(expected.size(), output.size());
     }
 
 }
